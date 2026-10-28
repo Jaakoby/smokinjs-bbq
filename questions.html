@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Smokin J's BBQ | Website Questions</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#14100d">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%2314100d'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-weight='900' font-size='40' text-anchor='middle' fill='%23ead9b8'%3EJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Big+Shoulders+Display:wght@700;800;900&family=Libre+Franklin:wght@400;500;700&display=swap">
+<style>
+/* Same brand as the main site. One narrow column of sections; a progress bar pinned to the top; answers save as he types. */
+:root {
+  --char: #14100d; --char-2: #1d1713; --char-3: #2a211b;
+  --cream: #ead9b8; --cream-dim: #b7a68a; --blood: #a8322a; --blood-hi: #c9483c; --line: #3a2e25;
+  --slab: "Alfa Slab One", Rockwell, Georgia, serif;
+  --cond: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
+  --body: "Libre Franklin", "Helvetica Neue", Arial, sans-serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+body { margin: 0; background: var(--char); color: var(--cream); font-family: var(--body); font-size: 17px; line-height: 1.55; }
+a { color: var(--cream); }
+:focus-visible { outline: 3px solid var(--blood-hi); outline-offset: 2px; }
+.wrap { max-width: 760px; margin: 0 auto; padding-left: max(18px, env(safe-area-inset-left, 0px)); padding-right: max(18px, env(safe-area-inset-right, 0px)); }
+
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 20; background: var(--char); }
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; background: rgba(20,16,13,.94); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+.bar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 10px; font-family: var(--cond); font-weight: 800; letter-spacing: .12em; text-transform: uppercase; font-size: 15px; }
+.bar .saved { color: var(--cream-dim); }
+.progress { height: 3px; background: var(--char-3); }
+.progress span { display: block; height: 100%; width: 0; background: var(--blood-hi); transition: width .3s; }
+
+header .wrap { padding-block: 44px 20px; }
+.label { font-family: var(--cond); font-weight: 800; font-size: 15px; letter-spacing: .18em; text-transform: uppercase; color: var(--blood-hi); }
+h1 { font-family: var(--slab); font-weight: 400; font-size: clamp(40px, 8vw, 64px); line-height: 1; margin: 8px 0 18px; text-wrap: balance; }
+header p { color: var(--cream-dim); margin: 0 0 12px; max-width: 58ch; }
+
+fieldset { border: 0; margin: 0; padding: 0; }
+section.q { border-top: 1px solid var(--line); padding-block: 34px; }
+section.q > .wrap > h2 { font-family: var(--slab); font-weight: 400; font-size: 30px; line-height: 1.05; margin: 6px 0 6px; }
+section.q > .wrap > p.why { color: var(--cream-dim); font-size: 15px; margin: 0 0 22px; }
+.field { display: grid; gap: 8px; margin-bottom: 22px; }
+.field > label, .field > legend { font-weight: 700; font-size: 16px; padding: 0; }
+.hint { color: var(--cream-dim); font-size: 14px; margin-top: -4px; }
+input[type=text], input[type=email], input[type=tel], textarea {
+  width: 100%; font: inherit; font-size: 16px; color: var(--cream); background: var(--char-2);
+  border: 1px solid var(--line); border-radius: 3px; padding: 12px 14px;
+}
+input::placeholder, textarea::placeholder { color: #7d6e5c; }
+input:focus, textarea:focus { border-color: var(--cream-dim); outline: none; }
+textarea { min-height: 96px; resize: vertical; }
+textarea.tall { min-height: 170px; }
+.choices { display: flex; flex-wrap: wrap; gap: 8px; }
+.choices label { position: relative; cursor: pointer; }
+.choices input { position: absolute; opacity: 0; inset: 0; cursor: pointer; }
+.choices span { display: inline-block; padding: 9px 16px; border: 1px solid var(--line); border-radius: 999px; background: var(--char-2); font-size: 15px; user-select: none; transition: background .15s, border-color .15s; }
+.choices input:checked + span { background: var(--blood); border-color: var(--blood); color: #fff3e6; }
+.choices input:focus-visible + span { outline: 3px solid var(--blood-hi); outline-offset: 2px; }
+.domains .choices { flex-direction: column; }
+.domains .choices span { border-radius: 3px; display: flex; justify-content: space-between; gap: 16px; padding: 12px 16px; font-family: var(--cond); font-weight: 800; font-size: 20px; letter-spacing: .04em; }
+.domains .choices small { font-family: var(--body); font-weight: 400; font-size: 13px; letter-spacing: 0; color: inherit; opacity: .75; align-self: center; }
+
+.send { border-top: 1px solid var(--line); background: var(--char-2); }
+.send .wrap { padding-block: 40px 56px; }
+.send h2 { font-family: var(--slab); font-weight: 400; font-size: 34px; margin: 6px 0 10px; }
+.send p { color: var(--cream-dim); margin: 0 0 20px; }
+.btns { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn { display: inline-flex; align-items: center; justify-content: center; font-family: var(--cond); font-weight: 800; font-size: 19px; letter-spacing: .12em; text-transform: uppercase; padding: 13px 26px; border-radius: 2px; text-decoration: none; border: 2px solid var(--cream); color: var(--cream); background: transparent; cursor: pointer; }
+.btn.fire { background: var(--blood); border-color: var(--blood); color: #fff3e6; }
+.btn:hover { filter: brightness(1.12); }
+.note { margin-top: 16px; font-size: 14px; color: var(--cream-dim); min-height: 1.4em; }
+#preview { display: none; width: 100%; min-height: 220px; margin-top: 16px; font: 13px/1.5 ui-monospace, Menlo, Consolas, monospace; }
+#preview.show { display: block; }
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <div class="wrap"><span>Smokin J's · Website Questions</span><span class="saved" id="saved">Saves as you type</span></div>
+  <div class="progress"><span id="prog"></span></div>
+</div>
+
+<header>
+  <div class="wrap">
+    <div class="label">For J</div>
+    <h1>Help us tell your story.</h1>
+    <p>Your site is live at <a href="./" target="_blank" rel="noopener">jaakoby.github.io/smokinjs-bbq</a>. These questions fill in the rest: your story, your menu, catering, and a real web address.</p>
+    <p>Skip anything you want. Short answers are fine. Your answers save on this phone as you go, so you can come back later. When you're done, hit <b>Send</b> at the bottom.</p>
+  </div>
+</header>
+
+<form id="f" autocomplete="on" novalidate>
+
+<section class="q"><div class="wrap">
+  <div class="label">1 of 7</div>
+  <h2>About you</h2>
+  <p class="why">People buy from people. This becomes the "Our Story" section.</p>
+  <div class="field"><label for="name">Your name, the way you want it on the site</label><input type="text" id="name" name="Name"></div>
+  <div class="field"><label for="theJ">What's the "J" in Smokin J's?</label><input type="text" id="theJ" name="The J"></div>
+  <div class="field"><label for="start">How did you get into BBQ?</label><textarea id="start" name="How I got into BBQ" placeholder="Who taught you, first cook, how long you've been doing it..."></textarea></div>
+  <div class="field"><label for="why">Why did you start the truck?</label><textarea id="why" name="Why I started the truck"></textarea></div>
+  <div class="field"><label for="proud">What's the one thing you want people to know about your food?</label><textarea id="proud" name="What people should know"></textarea></div>
+  <fieldset class="field"><legend>OK to put your photo and name on the site?</legend>
+    <div class="choices">
+      <label><input type="radio" name="Photo + name OK" value="Yes"><span>Yes</span></label>
+      <label><input type="radio" name="Photo + name OK" value="Name only"><span>Name only</span></label>
+      <label><input type="radio" name="Photo + name OK" value="Neither"><span>Neither</span></label>
+    </div>
+  </fieldset>
+</div></section>
+
+<section class="q"><div class="wrap">
+  <div class="label">2 of 7</div>
+  <h2>The cook</h2>
+  <p class="why">The details BBQ people care about. Real numbers beat generic ones.</p>
+  <div class="field"><label for="wood">What wood do you burn?</label><input type="text" id="wood" name="Wood" placeholder="Oak, hickory, mesquite, cherry, juniper..."></div>
+  <div class="field"><label for="smoker">Tell us about the smoker. Did you build it? How big?</label><textarea id="smoker" name="The smoker"></textarea></div>
+  <div class="field"><label for="brisket">How long does a brisket cook, and how early do you start?</label><input type="text" id="brisket" name="Brisket cook time" placeholder="e.g. 14 hours, fire lit at 8 PM"></div>
+  <div class="field"><label for="style">Rub and sauce style</label><input type="text" id="style" name="Rub + sauce" placeholder="Texas salt and pepper, sweet KC sauce, homemade..."></div>
+  <div class="field"><label for="signature">Your signature item, the one people come back for</label><input type="text" id="signature" name="Signature item"></div>
+</div></section>
+
+<section class="q"><div class="wrap">
+  <div class="label">3 of 7</div>
+  <h2>Menu &amp; prices</h2>
+  <p class="why">A photo of your menu board works too. Just text it over.</p>
+  <div class="field"><label for="menu">Full menu with prices</label><textarea class="tall" id="menu" name="Menu + prices" placeholder="Brisket 1/2 lb - $__&#10;Pulled pork sandwich - $__&#10;Mac & cheese - $__&#10;..."></textarea></div>
+  <div class="field"><label for="regular">Which items are always on, and which are specials?</label><textarea id="regular" name="Regular vs specials"></textarea></div>
+  <div class="field"><label for="sellout">What time do you usually sell out?</label><input type="text" id="sellout" name="Usual sell-out time"></div>
+  <fieldset class="field"><legend>Payment you take</legend>
+    <div class="choices">
+      <label><input type="checkbox" name="Payment" value="Cash"><span>Cash</span></label>
+      <label><input type="checkbox" name="Payment" value="Card"><span>Card</span></label>
+      <label><input type="checkbox" name="Payment" value="Tap / Apple Pay"><span>Tap / Apple Pay</span></label>
+      <label><input type="checkbox" name="Payment" value="Venmo"><span>Venmo</span></label>
+      <label><input type="checkbox" name="Payment" value="Cash App"><span>Cash App</span></label>
+    </div>
+  </fieldset>
+  <fieldset class="field"><legend>Can people pre-order or call ahead?</legend>
+    <div class="choices">
+      <label><input type="radio" name="Pre-orders" value="Yes"><span>Yes</span></label>
+      <label><input type="radio" name="Pre-orders" value="No"><span>No</span></label>
+      <label><input type="radio" name="Pre-orders" value="Want to start"><span>Want to start</span></label>
+    </div>
+  </fieldset>
+</div></section>
+
+<section class="q"><div class="wrap">
+  <div class="label">4 of 7</div>
+  <h2>Hours &amp; locations</h2>
+  <p class="why">The site says Tue–Thu, 10 AM till sold out, at Cinder Butte Meat Company.</p>
+  <fieldset class="field"><legend>Is that still right?</legend>
+    <div class="choices">
+      <label><input type="radio" name="Hours correct" value="Yes"><span>Yes</span></label>
+      <label><input type="radio" name="Hours correct" value="No, see below"><span>No, see below</span></label>
+    </div>
+  </fieldset>
+  <div class="field"><label for="hours">Any corrections, other regular spots, markets or events?</label><textarea id="hours" name="Hours / other spots"></textarea></div>
+  <div class="field"><label for="season">Do you close for winter or take breaks?</label><input type="text" id="season" name="Seasonal schedule"></div>
+</div></section>
+
+<section class="q"><div class="wrap">
+  <div class="label">5 of 7</div>
+  <h2>Catering</h2>
+  <p class="why">Catering is where trucks make real money. A clear catering page brings in bookings.</p>
+  <fieldset class="field"><legend>Do you want catering work?</legend>
+    <div class="choices">
+      <label><input type="radio" name="Catering" value="Yes"><span>Yes</span></label>
+      <label><input type="radio" name="Catering" value="Some"><span>Some, small jobs</span></label>
+      <label><input type="radio" name="Catering" value="Not yet"><span>Not yet</span></label>
+    </div>
+  </fieldset>
+  <fieldset class="field"><legend>What kind?</legend>
+    <div class="choices">
+      <label><input type="checkbox" name="Catering type" value="Truck on site"><span>Truck on site</span></label>
+      <label><input type="checkbox" name="Catering type" value="Pans for pickup"><span>Pans for pickup</span></label>
+      <label><input type="checkbox" name="Catering type" value="Drop-off delivery"><span>Drop-off delivery</span></label>
+      <label><input type="checkbox" name="Catering type" value="Weddings"><span>Weddings</span></label>
+      <label><input type="checkbox" name="Catering type" value="Work lunches"><span>Work lunches</span></label>
+    </div>
+  </fieldset>
+  <div class="field"><label for="crowd">Smallest and biggest group you'll take</label><input type="text" id="crowd" name="Group size range" placeholder="e.g. 20 to 200 people"></div>
+  <div class="field"><label for="price">How do you price it?</label><input type="text" id="price" name="Catering pricing" placeholder="Per person, per pound, flat fee, minimum..."></div>
+  <div class="field"><label for="travel">How far will you travel?</label><input type="text" id="travel" name="Travel range" placeholder="Bend, Prineville, Sisters, Madras..."></div>
+  <div class="field"><label for="notice">How much notice do you need? Deposit?</label><input type="text" id="notice" name="Lead time + deposit"></div>
+</div></section>
+
+<section class="q"><div class="wrap">
+  <div class="label">6 of 7</div>
+  <h2>Contact</h2>
+  <p class="why">Only what you want public goes on the site.</p>
+  <div class="field"><label for="phone">Phone number for the site (optional)</label><input type="tel" id="phone" name="Public phone"></div>
+  <div class="field"><label for="email">Email for orders and catering</label><input type="email" id="email" name="Public email" placeholder="offsetstickburner@gmail.com"></div>
+  <div class="field"><label for="social">Instagram, TikTok, anything else?</label><input type="text" id="social" name="Other socials"></div>
+  <div class="field"><label for="reviews">Any reviews or customer quotes you'd like on the site?</label><textarea id="reviews" name="Reviews / quotes" placeholder="Paste them, or tell us where they are (Facebook, Google...)"></textarea></div>
+</div></section>
+
+<section class="q domains"><div class="wrap">
+  <div class="label">7 of 7</div>
+  <h2>Web address &amp; logo</h2>
+  <p class="why">A real address like eatsmokinjs.com costs about $11 a year. The site itself stays free. These were open as of Oct 28.</p>
+  <fieldset class="field"><legend>Pick your web address</legend>
+    <div class="choices">
+      <label><input type="radio" name="Domain" value="eatsmokinjs.com"><span>eatsmokinjs.com <small>~$11/yr</small></span></label>
+      <label><input type="radio" name="Domain" value="smokinjsredmond.com"><span>smokinjsredmond.com <small>~$11/yr</small></span></label>
+      <label><input type="radio" name="Domain" value="smokinjsbbqoregon.com"><span>smokinjsbbqoregon.com <small>~$11/yr</small></span></label>
+      <label><input type="radio" name="Domain" value="smokinjsbbq.org"><span>smokinjsbbq.org <small>~$11/yr</small></span></label>
+      <label><input type="radio" name="Domain" value="smokinjsbbq.co"><span>smokinjsbbq.co <small>~$30/yr</small></span></label>
+      <label><input type="radio" name="Domain" value="Not now"><span>Not right now <small>keep the free link</small></span></label>
+    </div>
+  </fieldset>
+  <div class="field"><label for="domainOther">Another name you'd rather have?</label><input type="text" id="domainOther" name="Other domain idea"></div>
+  <fieldset class="field"><legend>Want some new logo options to look at?</legend>
+    <div class="choices">
+      <label><input type="radio" name="Logo refresh" value="Yes"><span>Yes, show me</span></label>
+      <label><input type="radio" name="Logo refresh" value="Keep mine"><span>Keep mine</span></label>
+    </div>
+  </fieldset>
+  <div class="field"><label for="logoLike">If yes, what feel? Anything you've seen and liked?</label><input type="text" id="logoLike" name="Logo direction" placeholder="Old west like the poster, clean and modern, skull, cowboy hat..."></div>
+  <fieldset class="field"><legend>Interested later in any of these?</legend>
+    <div class="choices">
+      <label><input type="checkbox" name="Later" value="Online ordering"><span>Online ordering</span></label>
+      <label><input type="checkbox" name="Later" value="Catering request form"><span>Catering request form</span></label>
+      <label><input type="checkbox" name="Later" value="Google Maps listing"><span>Google Maps listing</span></label>
+      <label><input type="checkbox" name="Later" value="Merch"><span>Merch</span></label>
+    </div>
+  </fieldset>
+  <div class="field"><label for="change">Anything on the current site you want changed?</label><textarea id="change" name="Site changes"></textarea></div>
+</div></section>
+
+</form>
+
+<section class="send" id="send">
+  <div class="wrap">
+    <div class="label">All done?</div>
+    <h2>Send your answers</h2>
+    <p>The email button opens your mail app with everything filled in. Just hit send. If that doesn't work, copy your answers and text them over. Got more photos? Text those too.</p>
+    <div class="btns">
+      <button class="btn fire" type="button" id="mail">Email Answers</button>
+      <button class="btn" type="button" id="copy">Copy Answers</button>
+    </div>
+    <div class="note" id="note" role="status"></div>
+    <textarea id="preview" readonly aria-label="Your answers"></textarea>
+  </div>
+</section>
+
+<script>
+(() => {
+  const TO = 'jakobytuckta@gmail.com';
+  const KEY = 'smokinjs-questions-v1';
+  const form = document.getElementById('f');
+  const saved = document.getElementById('saved');
+  const prog = document.getElementById('prog');
+  const note = document.getElementById('note');
+  const preview = document.getElementById('preview');
+
+  // Every distinct question, in page order.
+  const names = [...new Set([...form.elements].filter(e => e.name).map(e => e.name))];
+
+  function collect() {
+    const out = {};
+    for (const n of names) {
+      const els = form.querySelectorAll(`[name="${CSS.escape(n)}"]`);
+      const vals = [...els].filter(e => (e.type === 'radio' || e.type === 'checkbox') ? e.checked : e.value.trim()).map(e => e.value.trim());
+      if (vals.length) out[n] = vals.join(', ');
+    }
+    return out;
+  }
+  function restore(data) {
+    for (const [n, v] of Object.entries(data)) {
+      const els = form.querySelectorAll(`[name="${CSS.escape(n)}"]`);
+      els.forEach(e => {
+        if (e.type === 'radio' || e.type === 'checkbox') e.checked = v.split(', ').includes(e.value);
+        else e.value = v;
+      });
+    }
+  }
+  function update() {
+    const data = collect();
+    prog.style.width = Math.round(Object.keys(data).length / names.length * 100) + '%';
+    try { localStorage.setItem(KEY, JSON.stringify(data)); saved.textContent = 'Saved'; } catch (e) { saved.textContent = ''; }
+  }
+  function asText() {
+    const data = collect();
+    const lines = ["SMOKIN J'S BBQ - WEBSITE ANSWERS", ''];
+    for (const n of names) if (data[n]) lines.push(n.toUpperCase() + ':', data[n], '');
+    return lines.join('\n');
+  }
+
+  try { const d = JSON.parse(localStorage.getItem(KEY) || '{}'); restore(d); } catch (e) {}
+  update();
+  form.addEventListener('input', update);
+  form.addEventListener('change', update);
+  form.addEventListener('submit', e => e.preventDefault());
+
+  document.getElementById('mail').addEventListener('click', () => {
+    const body = asText();
+    if (Object.keys(collect()).length === 0) { note.textContent = 'Nothing filled in yet. Answer a few questions first.'; return; }
+    location.href = 'mailto:' + TO + '?subject=' + encodeURIComponent("Smokin J's website answers") + '&body=' + encodeURIComponent(body);
+    note.textContent = "Your mail app should open with your answers. If it didn't, use Copy Answers and text them.";
+  });
+  document.getElementById('copy').addEventListener('click', async () => {
+    const body = asText();
+    preview.value = body;
+    try { await navigator.clipboard.writeText(body); note.textContent = 'Copied. Paste it into a text or email.'; }
+    catch (e) { preview.classList.add('show'); preview.focus(); preview.select(); note.textContent = 'Select the text below and copy it.'; }
+  });
+})();
+</script>
+</body>
+</html>
