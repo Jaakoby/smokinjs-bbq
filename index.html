@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Smokin J's BBQ | Redmond, Oregon</title>
+<meta name="description" content="Wood-smoked BBQ off an offset stick burner in Redmond, Oregon. Brisket, ribs and more, Tuesday through Thursday from 10 AM till it sells out at Cinder Butte Meat Company.">
+<meta property="og:title" content="Smokin J's BBQ | Redmond, Oregon">
+<meta property="og:description" content="Real smoke. Real BBQ. Real good. Tue–Thu, 10 AM till sold out at 197 NW Oneil Hwy.">
+<meta property="og:image" content="https://jaakoby.github.io/smokinjs-bbq/img/brisket-sliced.jpg">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#14100d">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%2314100d'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-weight='900' font-size='40' text-anchor='middle' fill='%23ead9b8'%3EJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Big+Shoulders+Display:wght@700;800;900&family=Libre+Franklin:wght@400;500;700&display=swap">
+<style>
+/* Layout: brand-matched — charred black ground, cream type from his badge, oxblood from his poster.
+   Hero is a split (headline + the real brisket), then a lit-up week strip, the pit, the food, catering, and the map. */
+:root {
+  --char: #14100d;
+  --char-2: #1d1713;
+  --char-3: #2a211b;
+  --cream: #ead9b8;
+  --cream-dim: #b7a68a;
+  --blood: #a8322a;
+  --blood-hi: #c9483c;
+  --line: #3a2e25;
+  --slab: "Alfa Slab One", Rockwell, "Courier New", Georgia, serif;
+  --cond: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
+  --body: "Libre Franklin", "Helvetica Neue", Arial, sans-serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; background: var(--char); color: var(--cream); font-family: var(--body); font-size: 17px; line-height: 1.6; }
+img { max-width: 100%; height: auto; display: block; }
+html, body { overflow-x: clip; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--blood-hi); outline-offset: 3px; }
+.wrap { max-width: 1180px; margin: 0 auto; padding-left: max(18px, env(safe-area-inset-left, 0px)); padding-right: max(18px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { margin: 0; font-weight: 400; line-height: 1; text-wrap: balance; }
+h2 { font-family: var(--slab); font-size: clamp(40px, 6vw, 68px); letter-spacing: .01em; }
+.label { font-family: var(--cond); font-weight: 800; font-size: 15px; letter-spacing: .18em; text-transform: uppercase; color: var(--blood-hi); }
+.muted { color: var(--cream-dim); }
+section { scroll-margin-top: 72px; }
+
+/* Nav */
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 20; background: var(--char); }
+nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; background: rgba(20,16,13,.9); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-block: 10px; }
+nav .logo svg { width: 150px; height: auto; display: block; }
+nav ul { display: flex; gap: 26px; list-style: none; margin: 0; padding: 0; font-family: var(--cond); font-weight: 800; font-size: 17px; letter-spacing: .1em; text-transform: uppercase; }
+nav ul a { text-decoration: none; color: var(--cream-dim); }
+nav ul a:hover { color: var(--cream); }
+@media (max-width: 760px) { nav ul { display: none; } nav .btn { padding: 8px 12px; font-size: 14px; } nav .logo svg { width: 128px; } }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: var(--cond); font-weight: 800; font-size: 18px; letter-spacing: .12em; text-transform: uppercase; padding: 12px 24px; border-radius: 2px; text-decoration: none; border: 2px solid var(--cream); color: var(--cream); background: transparent; transition: background .15s, color .15s, transform .15s; }
+.btn:hover { transform: translateY(-2px); background: var(--cream); color: var(--char); }
+.btn.fire { background: var(--blood); border-color: var(--blood); color: #fff3e6; }
+.btn.fire:hover { background: var(--blood-hi); border-color: var(--blood-hi); color: #fff3e6; }
+.btn.sm { padding: 8px 16px; font-size: 15px; }
+
+/* Hero */
+.hero .wrap { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 64px); align-items: center; padding-block: clamp(36px, 6vw, 80px); }
+.hero h1 { font-family: var(--slab); font-size: clamp(50px, 7.4vw, 104px); line-height: .95; }
+.hero h1 em { font-style: normal; color: var(--blood-hi); }
+.hero .lede { font-size: clamp(18px, 1.8vw, 21px); color: var(--cream-dim); max-width: 40ch; margin: 22px 0 30px; }
+.hero .ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+.hero-photo { position: relative; min-width: 0; }
+.hero-photo img { width: 100%; aspect-ratio: 4 / 4.3; object-fit: cover; border-radius: 2px; }
+.hero-photo .tag { position: absolute; left: -14px; bottom: 26px; background: var(--cream); color: var(--char); font-family: var(--cond); font-weight: 900; font-size: 18px; letter-spacing: .1em; text-transform: uppercase; padding: 8px 16px; transform: rotate(-3deg); box-shadow: 0 6px 20px rgba(0,0,0,.4); }
+@media (max-width: 860px) { .hero .wrap { grid-template-columns: minmax(0, 1fr); } .hero-photo .tag { left: 10px; } }
+
+/* Week strip */
+.week { background: var(--char-2); border-block: 1px solid var(--line); }
+.week .wrap { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 20px 40px; align-items: center; padding-block: 22px; }
+.status { display: flex; align-items: center; gap: 12px; font-family: var(--cond); font-weight: 900; font-size: 24px; letter-spacing: .06em; text-transform: uppercase; }
+.dot { width: 12px; height: 12px; border-radius: 50%; background: var(--cream-dim); flex: none; }
+.status.open .dot { background: #e2683b; box-shadow: 0 0 0 0 rgba(226,104,59,.6); animation: pulse 1.8s infinite; }
+@keyframes pulse { 70% { box-shadow: 0 0 0 12px rgba(226,104,59,0); } 100% { box-shadow: 0 0 0 0 rgba(226,104,59,0); } }
+@media (prefers-reduced-motion: reduce) { .status.open .dot { animation: none; } }
+.days { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; max-width: 460px; }
+.day { text-align: center; font-family: var(--cond); font-weight: 800; font-size: 15px; letter-spacing: .1em; padding: 8px 0; border: 1px solid var(--line); color: #6f6152; }
+.day.on { border-color: var(--blood); background: var(--blood); color: #fff3e6; }
+.day.today { outline: 2px solid var(--cream); outline-offset: 2px; }
+.week .hours { font-family: var(--cond); font-weight: 800; font-size: 20px; letter-spacing: .08em; text-transform: uppercase; text-align: right; }
+.week .hours small { display: block; font-family: var(--body); font-weight: 400; font-size: 14px; letter-spacing: 0; text-transform: none; color: var(--cream-dim); }
+@media (max-width: 860px) { .week .wrap { grid-template-columns: minmax(0, 1fr); } .week .hours { text-align: left; } }
+
+/* The pit */
+.pit .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 72px); align-items: center; padding-block: clamp(64px, 9vw, 120px); }
+.pit-photos { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 12px; min-width: 0; }
+.pit-photos img { width: 100%; height: 100%; object-fit: cover; border-radius: 2px; }
+.pit-photos img:first-child { grid-row: span 2; aspect-ratio: 3 / 4; }
+.pit-photos img:not(:first-child) { aspect-ratio: 4 / 3; }
+.pit p { color: var(--cream-dim); max-width: 46ch; margin: 18px 0 0; }
+.facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin-top: 32px; border-top: 1px solid var(--line); }
+.fact { padding: 16px 12px 0 0; }
+.fact b { display: block; font-family: var(--slab); font-weight: 400; font-size: clamp(26px, 3vw, 34px); color: var(--cream); line-height: 1.1; }
+.fact span { font-family: var(--cond); font-weight: 800; font-size: 14px; letter-spacing: .14em; text-transform: uppercase; color: var(--cream-dim); }
+@media (max-width: 860px) { .pit .wrap { grid-template-columns: minmax(0, 1fr); } .pit-photos { order: 2; } }
+
+/* Food */
+.food { background: var(--char-2); border-block: 1px solid var(--line); }
+.food .wrap { padding-block: clamp(64px, 9vw, 120px); }
+.food-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 16px 40px; margin-bottom: 36px; }
+.food-head p { margin: 0; max-width: 40ch; color: var(--cream-dim); }
+.plates { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.plate { margin: 0; position: relative; overflow: hidden; border-radius: 2px; background: var(--char-3); }
+.plate img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; transition: transform .5s ease; }
+.plate:hover img { transform: scale(1.04); }
+.plate figcaption { position: absolute; inset: auto 0 0 0; padding: 48px 18px 16px; background: linear-gradient(transparent, rgba(12,9,7,.92)); }
+.plate figcaption b { display: block; font-family: var(--slab); font-weight: 400; font-size: 26px; line-height: 1.1; }
+.plate figcaption span { font-size: 14.5px; color: var(--cream-dim); }
+@media (max-width: 860px) { .plates { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .plates { grid-template-columns: minmax(0, 1fr); } .plate img { aspect-ratio: 4 / 3.6; } }
+
+/* Strip of more photos */
+.strip { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px; padding-block: 6px; }
+.strip img { width: 100%; aspect-ratio: 1; object-fit: cover; }
+@media (max-width: 760px) { .strip { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+/* Catering */
+.cater .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 72px); align-items: center; padding-block: clamp(64px, 9vw, 120px); }
+.cater img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: 50% 40%; border-radius: 2px; }
+.cater p { color: var(--cream-dim); max-width: 46ch; margin: 18px 0 24px; }
+.cater ul { list-style: none; margin: 0 0 28px; padding: 0; display: grid; gap: 10px; }
+.cater li { display: flex; gap: 12px; align-items: baseline; }
+.cater li::before { content: "★"; color: var(--blood-hi); font-size: 13px; }
+.contact { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.email { font-family: var(--cond); font-weight: 800; font-size: 22px; letter-spacing: .04em; user-select: all; overflow-wrap: anywhere; }
+@media (max-width: 860px) { .cater .wrap { grid-template-columns: minmax(0, 1fr); } }
+
+/* Find us */
+.find { position: relative; background: var(--char-2); border-top: 1px solid var(--line); overflow: hidden; }
+.find .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 72px); align-items: center; padding-block: clamp(64px, 9vw, 120px); }
+.find img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 2px; }
+.addr { font-family: var(--slab); font-size: clamp(28px, 3.6vw, 40px); line-height: 1.1; margin: 18px 0 6px; }
+.addr-sub { font-family: var(--cond); font-weight: 800; font-size: 17px; letter-spacing: .12em; text-transform: uppercase; color: var(--cream-dim); margin-bottom: 26px; }
+.find .ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+.motto { font-family: var(--cond); font-weight: 900; font-size: clamp(22px, 2.6vw, 30px); letter-spacing: .08em; text-transform: uppercase; color: var(--blood-hi); margin-top: 36px; line-height: 1.15; }
+@media (max-width: 860px) { .find .wrap { grid-template-columns: minmax(0, 1fr); } }
+
+footer { border-top: 1px solid var(--line); }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 18px; padding-block: 32px; color: var(--cream-dim); font-size: 14px; }
+footer svg { width: 130px; height: auto; display: block; }
+footer .links { display: flex; gap: 20px; flex-wrap: wrap; }
+
+@keyframes rise { from { opacity: .001; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: no-preference) {
+  .hero .copy > * { animation: rise .7s cubic-bezier(.2,.7,.2,1) both; }
+  .hero .copy > :nth-child(2) { animation-delay: .1s; }
+  .hero .copy > :nth-child(3) { animation-delay: .2s; }
+  .hero .copy > :nth-child(4) { animation-delay: .3s; }
+  .hero-photo { animation: rise .9s .15s cubic-bezier(.2,.7,.2,1) both; }
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="badge" viewBox="0 0 300 110">
+    <path d="M38 6 H262 L294 55 L262 104 H38 L6 55 Z" fill="none" stroke="currentColor" stroke-width="3"/>
+    <path d="M42 13 H258 L285 55 L258 97 H42 L15 55 Z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+    <text x="150" y="56" text-anchor="middle" font-family="'Alfa Slab One', Rockwell, Georgia, serif" font-size="30" letter-spacing="1.5" fill="currentColor">SMOKIN J'S BBQ</text>
+    <path d="M60 68 H240" stroke="currentColor" stroke-width="2.5"/>
+    <path d="M118 68 L150 63 L182 68 L150 73 Z" fill="currentColor"/>
+    <text x="150" y="90" text-anchor="middle" font-family="'Alfa Slab One', Rockwell, Georgia, serif" font-size="14" letter-spacing="3" fill="currentColor">EST. 2023</text>
+  </symbol>
+</svg>
+
+<nav aria-label="Main">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Smokin J's BBQ, back to top"><svg viewBox="0 0 300 110"><use href="#badge"/></svg></a>
+    <ul>
+      <li><a href="#pit">The Pit</a></li>
+      <li><a href="#food">Food</a></li>
+      <li><a href="#catering">Catering</a></li>
+      <li><a href="#find">Find Us</a></li>
+    </ul>
+    <a class="btn fire sm" href="#find">Find the Smoke</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="copy">
+      <div class="label">Redmond, Oregon · Est. 2023</div>
+      <h1>Real smoke.<br>Real BBQ.<br><em>Real good.</em></h1>
+      <p class="lede">Brisket, ribs and more, wood smoked the old west way on an offset stick burner. Find us at Cinder Butte Meat Company every Tuesday through Thursday.</p>
+      <div class="ctas">
+        <a class="btn fire" href="#find">Get Directions</a>
+        <a class="btn" href="#food">See the Food</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="img/brisket-sliced.jpg" alt="Sliced smoked brisket with a dark peppery bark and a pink smoke ring" width="1400" height="1258">
+      <div class="tag">Smoked fresh. Gone by close.</div>
+    </div>
+  </div>
+</header>
+
+<div class="week" aria-label="Hours">
+  <div class="wrap">
+    <div class="status" id="status"><span class="dot"></span><span id="status-text">Tue – Thu · 10 AM</span></div>
+    <div class="days" id="days">
+      <div class="day">MON</div><div class="day on">TUE</div><div class="day on">WED</div><div class="day on">THU</div><div class="day">FRI</div><div class="day">SAT</div><div class="day">SUN</div>
+    </div>
+    <div class="hours">10 AM till sold out<small>197 NW Oneil Hwy, Redmond</small></div>
+  </div>
+</div>
+
+<section class="pit" id="pit">
+  <div class="wrap">
+    <div>
+      <div class="label">Wood smoked the old west way</div>
+      <h2>No gas. No pellets. Just wood and time.</h2>
+      <p>Every brisket and rack of ribs cooks on an offset stick burner fed with split wood by hand. The fire gets tended all night so the meat is ready when the window opens. That's where the bark and the smoke ring come from, and it's why we close when it's gone.</p>
+      <div class="facts">
+        <div class="fact"><b>Offset</b><span>Stick burner</span></div>
+        <div class="fact"><b>All night</b><span>On the pit</span></div>
+        <div class="fact"><b>2023</b><span>Smoking since</span></div>
+      </div>
+    </div>
+    <div class="pit-photos">
+      <img src="img/brisket-smoker.jpg" alt="Brisket with a dark bark resting on the smoker grate" loading="lazy" width="1050" height="1400">
+      <img src="img/offset-smoker.jpg" alt="The Smokin J's offset smoker trailer under a blue Central Oregon sky" loading="lazy" width="1400" height="1050">
+      <img src="img/loaded-pit.jpg" alt="Ribs, pork and chicken across the grate of the open smoker" loading="lazy" width="1400" height="1050">
+    </div>
+  </div>
+</section>
+
+<section class="food" id="food">
+  <div class="wrap">
+    <div class="food-head">
+      <div>
+        <div class="label">Off the pit</div>
+        <h2>What we're smoking</h2>
+      </div>
+      <p>The lineup changes with what's on the pit that day. Check Facebook for today's board and specials.</p>
+    </div>
+    <div class="plates">
+      <figure class="plate"><img src="img/brisket-truck.jpg" alt="Two thick slices of brisket held up in front of the Smokin J's trailer" loading="lazy" width="1050" height="1400"><figcaption><b>Brisket</b><span>Salt, pepper, smoke, and a long cook.</span></figcaption></figure>
+      <figure class="plate"><img src="img/ribs.jpg" alt="A box of sauced, sliced pork ribs with a glossy glaze" loading="lazy" width="1050" height="1400"><figcaption><b>Ribs</b><span>Glazed and sliced, ready to eat.</span></figcaption></figure>
+      <figure class="plate"><img src="img/sandwich.jpg" alt="A BBQ sandwich piled with smoked meat, sauce and coleslaw" loading="lazy" width="1050" height="1400"><figcaption><b>Sandwiches</b><span>Piled high and topped with slaw.</span></figcaption></figure>
+      <figure class="plate"><img src="img/turkey.jpg" alt="Smoked turkey breast sliced thin on a cutting board" loading="lazy" width="1050" height="1400"><figcaption><b>Smoked Turkey</b><span>Juicy breast, sliced thin.</span></figcaption></figure>
+      <figure class="plate"><img src="img/tri-tip.jpg" alt="Seasoned tri-tips going onto the smoker" loading="lazy" width="1400" height="1050"><figcaption><b>Tri-Tip</b><span>A Pacific Northwest favorite.</span></figcaption></figure>
+      <figure class="plate"><img src="img/pork-smoker.jpg" alt="Rubbed pork cuts lined up on the smoker" loading="lazy" width="1051" height="1400"><figcaption><b>Pork</b><span>Rubbed red and smoked low.</span></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<div class="strip" aria-label="More from the pit">
+  <img src="img/bark.jpg" alt="A whole brisket with a jet-black bark" loading="lazy">
+  <img src="img/ribs-glazed.jpg" alt="A glazed rack of ribs on foil" loading="lazy">
+  <img src="img/chopped.jpg" alt="A pan of chopped smoked beef" loading="lazy">
+  <img src="img/brisket-slice.jpg" alt="A thick brisket slice held up to show the smoke ring" loading="lazy">
+  <img src="img/roast.jpg" alt="A smoked beef roast cut open on a wooden board" loading="lazy">
+  <img src="img/trailer.jpg" alt="The Smokin J's trailer parked under a blue sky" loading="lazy">
+</div>
+
+<section class="cater" id="catering">
+  <div class="wrap">
+    <img src="img/pitmaster.jpg" alt="The pitmaster standing in front of the Smokin J's BBQ banner at an outdoor event" loading="lazy" width="860" height="1400">
+    <div>
+      <div class="label">Events · Parties · Work lunches</div>
+      <h2>Too hot to cook? Take the night off.</h2>
+      <p>Smokin J's brings the smoke to your event. Tell us the date, how many people, and where, and we'll work out a spread that feeds the crowd.</p>
+      <ul>
+        <li>Pans of brisket, ribs and more for pickup</li>
+        <li>On-site service at events and markets</li>
+        <li>A menu built around your group</li>
+      </ul>
+      <div class="contact">
+        <a class="btn fire" href="mailto:offsetstickburner@gmail.com?subject=Catering%20request">Email for Catering</a>
+        <span class="email">offsetstickburner@gmail.com</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="find" id="find">
+  <div class="wrap">
+    <div>
+      <div class="label">Where to find us</div>
+      <h2>Follow your nose.</h2>
+      <div class="addr">197 NW Oneil Hwy<br>Redmond, OR 97756</div>
+      <div class="addr-sub">At Cinder Butte Meat Company · Tue – Thu · 10 AM till sold out</div>
+      <div class="ctas">
+        <a class="btn fire" href="https://www.google.com/maps/search/?api=1&amp;query=197+NW+Oneil+Hwy%2C+Redmond%2C+OR+97756" target="_blank" rel="noopener">Open in Maps</a>
+        <a class="btn" href="https://www.facebook.com/p/Smokin-Js-BBQ-61557063061645/" target="_blank" rel="noopener">Today's Specials</a>
+      </div>
+      <div class="motto">Find the smoke.<br>You won't regret it.</div>
+    </div>
+    <img src="img/cinder-butte.jpg" alt="The Smokin J's trailer parked beside the Cinder Butte Meat Company sign" loading="lazy" width="1400" height="1050">
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <svg viewBox="0 0 300 110" role="img" aria-label="Smokin J's BBQ, est. 2023"><use href="#badge"/></svg>
+    <div class="links">
+      <span>197 NW Oneil Hwy, Redmond, OR</span>
+      <a href="mailto:offsetstickburner@gmail.com">offsetstickburner@gmail.com</a>
+      <a href="https://www.facebook.com/p/Smokin-Js-BBQ-61557063061645/" target="_blank" rel="noopener">Facebook</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(() => {
+  // Open status in Redmond's time zone: Tue–Thu, opens 10 AM, closes when it sells out.
+  const parts = Object.fromEntries(new Intl.DateTimeFormat('en-US', {
+    timeZone: 'America/Los_Angeles', weekday: 'short', hour: 'numeric', hour12: false
+  }).formatToParts(new Date()).map(p => [p.type, p.value]));
+  const order = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+  const idx = order.indexOf(parts.weekday);
+  const hour = parseInt(parts.hour, 10) % 24;
+  const days = document.querySelectorAll('#days .day');
+  if (idx >= 0) days[idx].classList.add('today');
+  const serving = idx >= 1 && idx <= 3;
+  const status = document.getElementById('status');
+  const text = document.getElementById('status-text');
+  if (serving && hour >= 10 && hour < 18) {
+    status.classList.add('open');
+    text.textContent = 'Serving today till sold out';
+  } else if (serving && hour < 10) {
+    text.textContent = 'Opens today at 10 AM';
+  } else {
+    const next = idx === 0 ? 'tomorrow' : (idx >= 1 && idx <= 2 ? 'tomorrow' : 'Tuesday');
+    text.textContent = 'Back ' + next + ' at 10 AM';
+  }
+})();
+</script>
+</body>
+</html>
