@@ -4,19 +4,20 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Smokin J's BBQ | Redmond, Oregon</title>
-<meta name="description" content="Wood-smoked BBQ off an offset stick burner in Redmond, Oregon. Oak-smoked brisket and spare ribs on a hand-built offset smoker in Redmond, Oregon. 10 AM to 8 PM at Cinder Butte Meat Company. Catering for 50 to 300 across Central Oregon.">
+<meta name="description" content="Oak-smoked brisket and spare ribs on a hand-built offset smoker in Redmond, Oregon. Tuesday through Thursday, 10 AM to 8 PM at Cinder Butte Meat Company. Catering for 50 to 300 across Central Oregon.">
 <meta property="og:title" content="Smokin J's BBQ | Redmond, Oregon">
-<meta property="og:description" content="Real smoke. Real BBQ. Real good. Oak-smoked in Redmond, Oregon, at 197 NW Oneil Hwy.">
+<meta property="og:description" content="Real smoke. Real BBQ. Real good. Oak-smoked brisket and ribs, Tue–Thu at 197 NW Oneil Hwy, Redmond.">
 <meta property="og:image" content="https://jaakoby.github.io/smokinjs-bbq/img/brisket-sliced.jpg">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#14100d">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%2314100d'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-weight='900' font-size='40' text-anchor='middle' fill='%23ead9b8'%3EJ%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Big+Shoulders+Display:wght@700;800;900&family=Libre+Franklin:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Big+Shoulders+Display:wght@700;800;900&family=Libre+Franklin:wght@400;500;700&family=Permanent+Marker&display=swap">
 <style>
-/* Layout: brand-matched — charred black ground, cream type from his badge, oxblood from his poster.
-   Hero is a split (headline + the real brisket), then a lit-up week strip, the pit, the food, catering, and the map. */
+/* Brand-matched: charred black, cream from his badge, oxblood from his poster, ember orange for live things.
+   Hero = smoke + embers canvas over a split headline/photo. The menu is his whiteboard on corrugated steel,
+   with an order tray beside it. */
 :root {
   --char: #14100d;
   --char-2: #1d1713;
@@ -25,138 +26,245 @@
   --cream-dim: #b7a68a;
   --blood: #a8322a;
   --blood-hi: #c9483c;
+  --ember: #e2683b;
   --line: #3a2e25;
-  --slab: "Alfa Slab One", Rockwell, "Courier New", Georgia, serif;
+  --board: #f3efe6;
+  --board-ink: #1d1f22;
+  --marker: #1f8a7a;
+  --steel-1: #8d9196;
+  --steel-2: #b9bdc1;
+  --slab: "Alfa Slab One", Rockwell, Georgia, serif;
   --cond: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
   --body: "Libre Franklin", "Helvetica Neue", Arial, sans-serif;
+  --hand: "Permanent Marker", "Comic Sans MS", cursive;
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+html, body { overflow-x: clip; }
 body { margin: 0; background: var(--char); color: var(--cream); font-family: var(--body); font-size: 17px; line-height: 1.6; }
 img { max-width: 100%; height: auto; display: block; }
-html, body { overflow-x: clip; }
 a { color: inherit; }
-:focus-visible { outline: 3px solid var(--blood-hi); outline-offset: 3px; }
-.wrap { max-width: 1180px; margin: 0 auto; padding-left: max(18px, env(safe-area-inset-left, 0px)); padding-right: max(18px, env(safe-area-inset-right, 0px)); }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--ember); outline-offset: 3px; }
+.wrap { max-width: 1200px; margin: 0 auto; padding-left: max(18px, env(safe-area-inset-left, 0px)); padding-right: max(18px, env(safe-area-inset-right, 0px)); }
 h1, h2, h3 { margin: 0; font-weight: 400; line-height: 1; text-wrap: balance; }
 h2 { font-family: var(--slab); font-size: clamp(40px, 6vw, 68px); letter-spacing: .01em; }
 .label { font-family: var(--cond); font-weight: 800; font-size: 15px; letter-spacing: .18em; text-transform: uppercase; color: var(--blood-hi); }
 .muted { color: var(--cream-dim); }
 section { scroll-margin-top: 72px; }
 
-/* Nav */
-body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 20; background: var(--char); }
-nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; background: rgba(20,16,13,.9); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
-nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-block: 10px; }
-nav .logo svg { width: 150px; height: auto; display: block; }
-nav ul { display: flex; gap: 26px; list-style: none; margin: 0; padding: 0; font-family: var(--cond); font-weight: 800; font-size: 17px; letter-spacing: .1em; text-transform: uppercase; }
-nav ul a { text-decoration: none; color: var(--cream-dim); }
-nav ul a:hover { color: var(--cream); }
-@media (max-width: 760px) { nav ul { display: none; } nav .btn { padding: 8px 12px; font-size: 14px; } nav .logo svg { width: 128px; } }
+/* Reveal on scroll (only once JS marks the page) */
+.js .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); }
+.js .reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .js .reveal { opacity: 1; transform: none; transition: none; } }
 
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: var(--cond); font-weight: 800; font-size: 18px; letter-spacing: .12em; text-transform: uppercase; padding: 12px 24px; border-radius: 2px; text-decoration: none; border: 2px solid var(--cream); color: var(--cream); background: transparent; transition: background .15s, color .15s, transform .15s; }
+/* Nav */
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--char); }
+.nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: rgba(20,16,13,.88); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-block: 10px; }
+.nav .logo svg { width: 150px; height: auto; display: block; }
+.nav ul { display: flex; gap: 26px; list-style: none; margin: 0; padding: 0; font-family: var(--cond); font-weight: 800; font-size: 17px; letter-spacing: .1em; text-transform: uppercase; }
+.nav ul a { text-decoration: none; color: var(--cream-dim); position: relative; }
+.nav ul a::after { content: ""; position: absolute; left: 0; right: 100%; bottom: -4px; height: 2px; background: var(--ember); transition: right .25s; }
+.nav ul a:hover { color: var(--cream); }
+.nav ul a:hover::after { right: 0; }
+.nav-cta { display: flex; align-items: center; gap: 10px; }
+.tray-pill { display: none; align-items: center; gap: 8px; padding: 7px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--char-2); font-family: var(--cond); font-weight: 800; letter-spacing: .08em; font-size: 15px; text-decoration: none; text-transform: uppercase; }
+.tray-pill.has { display: inline-flex; }
+.tray-pill b { background: var(--ember); color: var(--char); border-radius: 999px; min-width: 22px; height: 22px; display: grid; place-items: center; font-size: 13px; }
+@media (max-width: 900px) { .nav ul { display: none; } .nav .logo svg { width: 120px; } }
+@media (max-width: 440px) { .nav-cta .btn { display: none; } .tray-pill { display: inline-flex; } }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: var(--cond); font-weight: 800; font-size: 18px; letter-spacing: .12em; text-transform: uppercase; padding: 12px 24px; border-radius: 2px; text-decoration: none; border: 2px solid var(--cream); color: var(--cream); background: transparent; cursor: pointer; transition: background .15s, color .15s, transform .15s, border-color .15s; }
 .btn:hover { transform: translateY(-2px); background: var(--cream); color: var(--char); }
 .btn.fire { background: var(--blood); border-color: var(--blood); color: #fff3e6; }
 .btn.fire:hover { background: var(--blood-hi); border-color: var(--blood-hi); color: #fff3e6; }
 .btn.sm { padding: 8px 16px; font-size: 15px; }
+.btn[disabled] { opacity: .4; pointer-events: none; }
 
 /* Hero */
-.hero .wrap { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 64px); align-items: center; padding-block: clamp(36px, 6vw, 80px); }
-.hero h1 { font-family: var(--slab); font-size: clamp(50px, 7.4vw, 104px); line-height: .95; }
-.hero h1 em { font-style: normal; color: var(--blood-hi); }
-.hero .lede { font-size: clamp(18px, 1.8vw, 21px); color: var(--cream-dim); max-width: 40ch; margin: 22px 0 30px; }
+.hero { position: relative; overflow: hidden; isolation: isolate; }
+.hero canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
+.hero::after { content: ""; position: absolute; inset: auto 0 0 0; height: 180px; z-index: -1; background: radial-gradient(60% 100% at 70% 100%, rgba(226,104,59,.18), transparent 70%); pointer-events: none; }
+.hero .wrap { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 64px); align-items: center; padding-block: clamp(36px, 6vw, 84px); }
+.hero h1 { font-family: var(--slab); font-size: clamp(50px, 7.4vw, 108px); line-height: .95; }
+.hero h1 span { display: block; }
+.hero h1 em { font-style: normal; color: var(--blood-hi); text-shadow: 0 0 40px rgba(201,72,60,.35); }
+.hero .lede { font-size: clamp(18px, 1.8vw, 21px); color: var(--cream-dim); max-width: 42ch; margin: 22px 0 30px; }
 .hero .ctas { display: flex; flex-wrap: wrap; gap: 12px; }
-.hero-photo { position: relative; min-width: 0; }
-.hero-photo img { width: 100%; aspect-ratio: 4 / 4.3; object-fit: cover; border-radius: 2px; }
+.hero-photo { position: relative; min-width: 0; transition: transform .2s ease-out; }
+.hero-photo img { width: 100%; aspect-ratio: 4 / 4.3; object-fit: cover; border-radius: 2px; box-shadow: 0 30px 60px rgba(0,0,0,.5); }
 .hero-photo .tag { position: absolute; left: -14px; bottom: 26px; background: var(--cream); color: var(--char); font-family: var(--cond); font-weight: 900; font-size: 18px; letter-spacing: .1em; text-transform: uppercase; padding: 8px 16px; transform: rotate(-3deg); box-shadow: 0 6px 20px rgba(0,0,0,.4); }
 @media (max-width: 860px) { .hero .wrap { grid-template-columns: minmax(0, 1fr); } .hero-photo .tag { left: 10px; } }
+@keyframes rise { from { opacity: .001; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: no-preference) {
+  .hero .copy > *, .hero h1 span { animation: rise .8s cubic-bezier(.2,.7,.2,1) both; }
+  .hero h1 span:nth-child(2) { animation-delay: .08s; }
+  .hero h1 span:nth-child(3) { animation-delay: .16s; }
+  .hero .copy > :nth-child(3) { animation-delay: .26s; }
+  .hero .copy > :nth-child(4) { animation-delay: .34s; }
+  .hero-photo { animation: rise 1s .15s cubic-bezier(.2,.7,.2,1) both; }
+}
 
-/* Week strip */
-.week { background: var(--char-2); border-block: 1px solid var(--line); }
-.week .wrap { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 20px 40px; align-items: center; padding-block: 22px; }
-.status { display: flex; align-items: center; gap: 12px; font-family: var(--cond); font-weight: 900; font-size: 24px; letter-spacing: .06em; text-transform: uppercase; }
+/* Ticker */
+.ticker { background: var(--blood); color: #fff3e6; overflow: hidden; white-space: nowrap; }
+.ticker-track { display: inline-flex; padding-block: 10px; animation: tick 38s linear infinite; }
+.ticker span { font-family: var(--cond); font-weight: 900; font-size: 20px; letter-spacing: .14em; text-transform: uppercase; padding-inline: 22px; }
+.ticker span::after { content: "✦"; margin-left: 44px; opacity: .7; }
+@keyframes tick { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .ticker-track { animation: none; } }
+
+/* Pit clock */
+.clock { background: var(--char-2); border-bottom: 1px solid var(--line); }
+.clock .wrap { display: grid; grid-template-columns: minmax(0, auto) minmax(0, 1fr) minmax(0, auto); gap: 18px 40px; align-items: center; padding-block: 22px; }
+.status { display: flex; align-items: center; gap: 12px; }
+.status b { display: block; font-family: var(--cond); font-weight: 900; font-size: 24px; letter-spacing: .06em; text-transform: uppercase; line-height: 1.1; }
+.status small { display: block; color: var(--cream-dim); font-size: 14px; font-variant-numeric: tabular-nums; }
 .dot { width: 12px; height: 12px; border-radius: 50%; background: var(--cream-dim); flex: none; }
-.status.open .dot { background: #e2683b; box-shadow: 0 0 0 0 rgba(226,104,59,.6); animation: pulse 1.8s infinite; }
-@keyframes pulse { 70% { box-shadow: 0 0 0 12px rgba(226,104,59,0); } 100% { box-shadow: 0 0 0 0 rgba(226,104,59,0); } }
+.status.open .dot { background: var(--ember); animation: pulse 1.8s infinite; }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(226,104,59,.6); } 70% { box-shadow: 0 0 0 12px rgba(226,104,59,0); } 100% { box-shadow: 0 0 0 0 rgba(226,104,59,0); } }
 @media (prefers-reduced-motion: reduce) { .status.open .dot { animation: none; } }
-.days { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; max-width: 460px; }
-.day { text-align: center; font-family: var(--cond); font-weight: 800; font-size: 15px; letter-spacing: .1em; padding: 8px 0; border: 1px solid var(--line); color: #6f6152; }
+.meter { min-width: 0; }
+.meter-top { display: flex; justify-content: space-between; gap: 12px; font-family: var(--cond); font-weight: 800; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--cream-dim); margin-bottom: 8px; }
+.meter-top span:last-child { color: var(--ember); }
+.meter-bar { position: relative; height: 10px; border-radius: 999px; background: linear-gradient(90deg, #3d8a4a 0%, #c9a23a 50%, var(--blood-hi) 75%, #4a3a30 100%); }
+.meter-now { position: absolute; top: 50%; width: 18px; height: 18px; margin: -9px 0 0 -9px; border-radius: 50%; background: var(--cream); border: 3px solid var(--char); box-shadow: 0 0 0 2px var(--cream); left: 0; transition: left .6s; }
+.meter-scale { display: flex; justify-content: space-between; gap: 8px; margin-top: 6px; font-size: 12px; color: var(--cream-dim); font-variant-numeric: tabular-nums; }
+.days { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 5px; }
+.day { text-align: center; font-family: var(--cond); font-weight: 800; font-size: 14px; letter-spacing: .08em; padding: 7px 6px; border: 1px solid var(--line); color: #6f6152; }
 .day.on { border-color: var(--blood); background: var(--blood); color: #fff3e6; }
 .day.today { outline: 2px solid var(--cream); outline-offset: 2px; }
-.week .hours { font-family: var(--cond); font-weight: 800; font-size: 20px; letter-spacing: .08em; text-transform: uppercase; text-align: right; }
-.week .hours small { display: block; font-family: var(--body); font-weight: 400; font-size: 14px; letter-spacing: 0; text-transform: none; color: var(--cream-dim); }
-@media (max-width: 860px) { .week .wrap { grid-template-columns: minmax(0, 1fr); } .week .hours { text-align: left; } }
+@media (max-width: 960px) { .clock .wrap { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 520px) { .meter-scale span:nth-child(2) { display: none; } }
 
-/* The pit */
-.pit .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 72px); align-items: center; padding-block: clamp(64px, 9vw, 120px); }
-.pit-photos { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 12px; min-width: 0; }
-.pit-photos img { width: 100%; height: 100%; object-fit: cover; border-radius: 2px; }
-.pit-photos img:first-child { grid-row: span 2; aspect-ratio: 3 / 4; }
-.pit-photos img:not(:first-child) { aspect-ratio: 4 / 3; }
-.pit p { color: var(--cream-dim); max-width: 46ch; margin: 18px 0 0; }
-.facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin-top: 32px; border-top: 1px solid var(--line); }
-.fact { padding: 16px 12px 0 0; }
-.fact b { display: block; white-space: nowrap; font-family: var(--slab); font-weight: 400; font-size: clamp(22px, 2.6vw, 30px); color: var(--cream); line-height: 1.1; }
-.fact span { font-family: var(--cond); font-weight: 800; font-size: 14px; letter-spacing: .14em; text-transform: uppercase; color: var(--cream-dim); }
-@media (max-width: 860px) { .pit .wrap { grid-template-columns: minmax(0, 1fr); } .pit-photos { order: 2; } }
+/* Menu: his whiteboard on corrugated steel */
+.menu { position: relative; background: repeating-linear-gradient(90deg, var(--steel-1) 0 6px, var(--steel-2) 14px, var(--steel-1) 22px, #7c8085 28px); }
+.menu::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,16,13,.94), rgba(20,16,13,.6) 200px, rgba(20,16,13,.6) calc(100% - 140px), rgba(20,16,13,.96)); pointer-events: none; }
+.menu .wrap { position: relative; padding-block: clamp(56px, 8vw, 104px); }
+.menu-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 16px 40px; margin-bottom: 28px; }
+.menu-head p { margin: 0; max-width: 42ch; color: var(--cream); }
 
-/* Food */
-.food { background: var(--char-2); border-block: 1px solid var(--line); }
-.food .wrap { padding-block: clamp(64px, 9vw, 120px); }
-.food-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 16px 40px; margin-bottom: 36px; }
-.food-head p { margin: 0; max-width: 40ch; color: var(--cream-dim); }
-.plates { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
-.plate { margin: 0; position: relative; overflow: hidden; border-radius: 2px; background: var(--char-3); }
-.plate img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; transition: transform .5s ease; }
-.plate:hover img { transform: scale(1.04); }
-.plate figcaption { position: absolute; inset: auto 0 0 0; padding: 48px 18px 16px; background: linear-gradient(transparent, rgba(12,9,7,.92)); }
-.plate figcaption b { display: block; font-family: var(--slab); font-weight: 400; font-size: 26px; line-height: 1.1; }
-.plate figcaption span { font-size: 14.5px; color: var(--cream-dim); }
-@media (max-width: 860px) { .plates { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 520px) { .plates { grid-template-columns: minmax(0, 1fr); } .plate img { aspect-ratio: 4 / 3.6; } }
+.feed { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; background: rgba(20,16,13,.9); border: 1px solid var(--line); padding: 16px 20px; margin-bottom: 18px; border-radius: 3px; }
+.feed-q { font-family: var(--cond); font-weight: 900; font-size: 22px; letter-spacing: .06em; text-transform: uppercase; }
+.stepper { display: inline-flex; align-items: center; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; }
+.stepper button { width: 42px; height: 42px; border: 0; background: var(--char-3); cursor: pointer; font-size: 22px; line-height: 1; }
+.stepper button:hover { background: var(--blood); }
+.stepper output { min-width: 56px; text-align: center; font-family: var(--slab); font-size: 22px; font-variant-numeric: tabular-nums; }
+.feed-say { flex: 1 1 260px; min-width: 0; color: var(--cream-dim); font-size: 15px; }
+.feed-say b { color: var(--cream); }
 
-/* Strip of more photos */
+.menu-grid { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 18px; align-items: start; }
+@media (max-width: 980px) { .menu-grid { grid-template-columns: minmax(0, 1fr); } }
+
+.board { background: var(--board); color: var(--board-ink); border: 10px solid #111; border-radius: 4px; box-shadow: 0 20px 50px rgba(0,0,0,.5), inset 0 0 60px rgba(0,0,0,.06); min-width: 0; }
+.tabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-bottom: 2px solid #2a2a2a; }
+.tab { background: none; border: 0; padding: 14px 8px 10px; cursor: pointer; font-family: var(--hand); font-size: clamp(22px, 3vw, 30px); color: #7a7a7a; border-right: 2px solid #2a2a2a; }
+.tab:last-child { border-right: 0; }
+.tab[aria-selected="true"] { color: var(--board-ink); background: rgba(0,0,0,.04); box-shadow: inset 0 -4px 0 var(--blood); }
+.panel { padding: 18px clamp(14px, 3vw, 28px) 24px; }
+.panel .note { font-family: var(--hand); color: var(--marker); font-size: 18px; margin: 0 0 8px; }
+.items { display: grid; }
+.item { display: grid; grid-template-columns: auto minmax(0, 1fr) auto auto; gap: 14px; align-items: center; padding: 11px 0; border-bottom: 1px dashed rgba(0,0,0,.18); }
+.item:last-child { border-bottom: 0; }
+.item .thumb { width: 58px; height: 58px; border-radius: 50%; object-fit: cover; border: 2px solid #222; }
+.item .thumb.blank { display: grid; place-items: center; background: #e5dfd2; font-family: var(--hand); font-size: 22px; color: #555; }
+.item .nm { font-family: var(--hand); font-size: clamp(20px, 2.4vw, 26px); line-height: 1.15; }
+.item .ds { font-size: 14px; color: #555; line-height: 1.35; }
+.item .pr { font-family: var(--hand); font-size: 28px; color: var(--marker); white-space: nowrap; }
+.add { width: 44px; height: 44px; border-radius: 50%; border: 2px solid var(--board-ink); background: transparent; color: var(--board-ink); font-size: 26px; line-height: 1; cursor: pointer; transition: background .15s, color .15s, transform .2s; }
+.add:hover { background: var(--blood); border-color: var(--blood); color: #fff; transform: rotate(90deg); }
+.sides-line { margin-top: 16px; padding-top: 14px; border-top: 2px solid #2a2a2a; font-family: var(--hand); font-size: 19px; }
+.sides-line span { color: var(--marker); }
+@media (max-width: 520px) { .item { grid-template-columns: minmax(0, 1fr) auto auto; gap: 10px; } .item .thumb { display: none; } }
+
+/* Order tray */
+.tray { position: sticky; top: 84px; background: var(--char); border: 1px solid var(--line); border-radius: 3px; box-shadow: 0 20px 50px rgba(0,0,0,.5); min-width: 0; scroll-margin-top: 84px; }
+.tray-head { display: flex; justify-content: space-between; align-items: baseline; padding: 16px 18px 12px; border-bottom: 1px solid var(--line); }
+.tray-head h3 { font-family: var(--slab); font-size: 26px; }
+.tray-head button { background: none; border: 0; color: var(--cream-dim); cursor: pointer; font-size: 14px; text-decoration: underline; }
+.lines { list-style: none; margin: 0; padding: 6px 18px; max-height: 340px; overflow: auto; }
+.lines:empty { display: none; }
+.lines li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 12px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.lines li:last-child { border-bottom: 0; }
+.ln-name { font-weight: 700; }
+.ln-det { font-size: 13.5px; color: var(--cream-dim); line-height: 1.35; }
+.ln-price { font-variant-numeric: tabular-nums; font-weight: 700; text-align: right; }
+.qty { display: inline-flex; align-items: center; gap: 2px; justify-self: end; }
+.qty button { width: 28px; height: 28px; border-radius: 50%; border: 1px solid var(--line); background: var(--char-3); cursor: pointer; line-height: 1; }
+.qty button:hover { background: var(--blood); }
+.qty span { min-width: 22px; text-align: center; font-variant-numeric: tabular-nums; }
+.empty { padding: 22px 18px; color: var(--cream-dim); font-size: 15px; }
+.tray-foot { padding: 14px 18px 18px; border-top: 1px solid var(--line); display: grid; gap: 12px; }
+.total { display: flex; justify-content: space-between; align-items: baseline; }
+.total span { font-family: var(--cond); font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--cream-dim); }
+.total b { font-family: var(--slab); font-size: 32px; font-variant-numeric: tabular-nums; }
+.tray-foot input { width: 100%; font: inherit; font-size: 16px; color: var(--cream); background: var(--char-2); border: 1px solid var(--line); border-radius: 3px; padding: 10px 12px; }
+.tray-foot input::placeholder { color: #7d6e5c; }
+.tray-foot .two { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 8px; }
+.tray-foot .btn { width: 100%; padding-inline: 10px; }
+.fine { font-size: 13px; color: var(--cream-dim); line-height: 1.45; }
+.copied { color: var(--ember); font-size: 14px; min-height: 1.3em; }
+
+/* Gallery strip */
 .strip { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px; padding-block: 6px; }
-.strip img { width: 100%; aspect-ratio: 1; object-fit: cover; }
+.strip button { padding: 0; border: 0; background: none; cursor: zoom-in; overflow: hidden; }
+.strip img { width: 100%; aspect-ratio: 1; object-fit: cover; transition: transform .5s, filter .5s; filter: saturate(.85); }
+.strip button:hover img { transform: scale(1.08); filter: saturate(1.1); }
 @media (max-width: 760px) { .strip { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 
 /* Story */
-.story { background: var(--char-2); border-block: 1px solid var(--line); }
 .story .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 72px); align-items: center; padding-block: clamp(64px, 9vw, 120px); }
+.story figure { margin: 0; position: relative; }
 .story img { width: 100%; aspect-ratio: 928 / 708; object-fit: cover; border-radius: 2px; }
+.story figure::after { content: "Est. 2023"; position: absolute; right: 8px; top: -14px; background: var(--ember); color: var(--char); font-family: var(--cond); font-weight: 900; letter-spacing: .12em; text-transform: uppercase; padding: 6px 14px; transform: rotate(4deg); }
 .story p { color: var(--cream-dim); max-width: 54ch; margin: 18px 0 0; }
 .story blockquote { margin: 28px 0 0; padding: 0 0 0 20px; border-left: 3px solid var(--blood-hi); font-family: var(--slab); font-size: clamp(20px, 2.2vw, 25px); line-height: 1.3; color: var(--cream); max-width: 34ch; }
 .story .sig { margin-top: 14px; font-family: var(--cond); font-weight: 800; font-size: 16px; letter-spacing: .14em; text-transform: uppercase; color: var(--blood-hi); }
 @media (max-width: 860px) { .story .wrap { grid-template-columns: minmax(0, 1fr); } }
-.cater dl { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; margin: 0 0 28px; border-top: 1px solid var(--line); }
-.cater dl div { padding: 14px 12px 14px 0; border-bottom: 1px solid var(--line); }
-.cater dt { font-family: var(--cond); font-weight: 800; font-size: 14px; letter-spacing: .14em; text-transform: uppercase; color: var(--cream-dim); }
-.cater dd { margin: 2px 0 0; font-family: var(--slab); font-size: 21px; line-height: 1.2; }
-.phone { font-family: var(--cond); font-weight: 800; font-size: 22px; letter-spacing: .04em; text-decoration: none; }
-.callout { margin-top: 18px; font-size: 15px; color: var(--cream-dim); }
-.callout a { color: var(--cream); font-weight: 700; }
+
+/* Pit */
+.pit { background: var(--char-2); border-block: 1px solid var(--line); }
+.pit .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 72px); align-items: center; padding-block: clamp(64px, 9vw, 120px); }
+.pit-photos { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 12px; min-width: 0; }
+.pit-photos button { padding: 0; border: 0; background: none; cursor: zoom-in; overflow: hidden; border-radius: 2px; }
+.pit-photos img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
+.pit-photos button:hover img { transform: scale(1.05); }
+.pit-photos button:first-child { grid-row: span 2; }
+.pit-photos button:first-child img { aspect-ratio: 3 / 4; }
+.pit-photos button:not(:first-child) img { aspect-ratio: 4 / 3; }
+.pit p { color: var(--cream-dim); max-width: 46ch; margin: 18px 0 0; }
+.facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 32px; border-top: 1px solid var(--line); }
+.fact { padding: 16px 12px 0 0; }
+.fact b { display: block; white-space: nowrap; font-family: var(--slab); font-weight: 400; font-size: clamp(22px, 2.6vw, 32px); color: var(--cream); line-height: 1.1; font-variant-numeric: tabular-nums; }
+.fact span { font-family: var(--cond); font-weight: 800; font-size: 14px; letter-spacing: .14em; text-transform: uppercase; color: var(--cream-dim); }
+@media (max-width: 860px) { .pit .wrap { grid-template-columns: minmax(0, 1fr); } .pit-photos { order: 2; } }
 
 /* Catering */
 .cater .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 72px); align-items: center; padding-block: clamp(64px, 9vw, 120px); }
-.cater img { width: 100%; aspect-ratio: 4 / 4.6; object-fit: cover; object-position: 50% 40%; border-radius: 2px; }
+.cater img { width: 100%; aspect-ratio: 4 / 4.6; object-fit: cover; border-radius: 2px; }
 .cater p { color: var(--cream-dim); max-width: 46ch; margin: 18px 0 24px; }
-.cater ul { list-style: none; margin: 0 0 28px; padding: 0; display: grid; gap: 10px; }
+.cater ul { list-style: none; margin: 0 0 24px; padding: 0; display: grid; gap: 10px; }
 .cater li { display: flex; gap: 12px; align-items: baseline; }
 .cater li::before { content: "★"; color: var(--blood-hi); font-size: 13px; }
+.cater dl { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin: 0 0 24px; border-top: 1px solid var(--line); }
+.cater dl div { padding: 14px 12px 14px 0; border-bottom: 1px solid var(--line); }
+.cater dt { font-family: var(--cond); font-weight: 800; font-size: 14px; letter-spacing: .14em; text-transform: uppercase; color: var(--cream-dim); }
+.cater dd { margin: 2px 0 0; font-family: var(--slab); font-size: 21px; line-height: 1.2; }
 .contact { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
-.email { font-family: var(--cond); font-weight: 800; font-size: 22px; letter-spacing: .04em; user-select: all; overflow-wrap: anywhere; }
+.callout { margin-top: 16px; font-size: 15px; color: var(--cream-dim); }
+.callout b { color: var(--cream); user-select: all; overflow-wrap: anywhere; }
 @media (max-width: 860px) { .cater .wrap { grid-template-columns: minmax(0, 1fr); } }
 
-/* Find us */
-.find { position: relative; background: var(--char-2); border-top: 1px solid var(--line); overflow: hidden; }
+/* Find */
+.find { background: var(--char-2); border-top: 1px solid var(--line); }
 .find .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 72px); align-items: center; padding-block: clamp(64px, 9vw, 120px); }
 .find img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 2px; }
 .addr { font-family: var(--slab); font-size: clamp(28px, 3.6vw, 40px); line-height: 1.1; margin: 18px 0 6px; }
 .addr-sub { font-family: var(--cond); font-weight: 800; font-size: 17px; letter-spacing: .12em; text-transform: uppercase; color: var(--cream-dim); margin-bottom: 26px; }
 .find .ctas { display: flex; flex-wrap: wrap; gap: 12px; }
-.motto { font-family: var(--cond); font-weight: 900; font-size: clamp(22px, 2.6vw, 30px); letter-spacing: .08em; text-transform: uppercase; color: var(--blood-hi); margin-top: 36px; line-height: 1.15; }
+.motto { font-family: var(--cond); font-weight: 900; font-size: clamp(22px, 2.6vw, 30px); letter-spacing: .08em; text-transform: uppercase; color: var(--blood-hi); margin-top: 32px; line-height: 1.15; }
 @media (max-width: 860px) { .find .wrap { grid-template-columns: minmax(0, 1fr); } }
 
 footer { border-top: 1px solid var(--line); }
@@ -164,14 +272,27 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; a
 footer svg { width: 130px; height: auto; display: block; }
 footer .links { display: flex; gap: 20px; flex-wrap: wrap; }
 
-@keyframes rise { from { opacity: .001; transform: translateY(16px); } to { opacity: 1; transform: none; } }
-@media (prefers-reduced-motion: no-preference) {
-  .hero .copy > * { animation: rise .7s cubic-bezier(.2,.7,.2,1) both; }
-  .hero .copy > :nth-child(2) { animation-delay: .1s; }
-  .hero .copy > :nth-child(3) { animation-delay: .2s; }
-  .hero .copy > :nth-child(4) { animation-delay: .3s; }
-  .hero-photo { animation: rise .9s .15s cubic-bezier(.2,.7,.2,1) both; }
-}
+/* Dialogs */
+dialog { border: 1px solid var(--line); border-radius: 4px; background: var(--char); color: var(--cream); padding: 0; width: min(460px, calc(100vw - 32px)); box-shadow: 0 30px 80px rgba(0,0,0,.7); }
+dialog::backdrop { background: rgba(8,6,5,.75); backdrop-filter: blur(3px); }
+.dlg-head { padding: 20px 22px 6px; }
+.dlg-head h3 { font-family: var(--slab); font-size: 28px; }
+.dlg-head p { margin: 6px 0 0; color: var(--cream-dim); font-size: 15px; }
+.dlg-body { padding: 10px 22px 6px; display: grid; gap: 14px; }
+.pick > span { display: block; font-family: var(--cond); font-weight: 800; letter-spacing: .12em; text-transform: uppercase; font-size: 14px; color: var(--cream-dim); margin-bottom: 6px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chips button { padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line); background: var(--char-2); cursor: pointer; font-size: 15px; }
+.chips button[aria-pressed="true"] { background: var(--blood); border-color: var(--blood); color: #fff3e6; }
+.dlg-foot { display: flex; gap: 10px; justify-content: flex-end; padding: 16px 22px 20px; }
+.lightbox { width: min(1100px, calc(100vw - 24px)); background: #000; border: 0; }
+.lightbox img { width: 100%; max-height: 80vh; object-fit: contain; }
+.lb-bar { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px 14px; background: var(--char); }
+.lb-bar p { margin: 0; font-size: 14px; color: var(--cream-dim); min-width: 0; }
+.lb-bar div { display: flex; gap: 6px; flex: none; }
+.lb-bar button { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line); background: var(--char-3); cursor: pointer; font-size: 18px; }
+
+.toast { position: fixed; left: 50%; bottom: calc(18px + env(safe-area-inset-bottom, 0px)); transform: translate(-50%, 160%); background: var(--cream); color: var(--char); font-family: var(--cond); font-weight: 900; letter-spacing: .1em; text-transform: uppercase; padding: 10px 18px; border-radius: 999px; box-shadow: 0 10px 30px rgba(0,0,0,.5); transition: transform .3s; z-index: 50; white-space: nowrap; }
+.toast.show { transform: translate(-50%, 0); }
 </style>
 </head>
 <body>
@@ -187,52 +308,127 @@ footer .links { display: flex; gap: 20px; flex-wrap: wrap; }
   </symbol>
 </svg>
 
-<nav aria-label="Main">
+<nav class="nav" aria-label="Main">
   <div class="wrap">
     <a class="logo" href="#top" aria-label="Smokin J's BBQ, back to top"><svg viewBox="0 0 300 110"><use href="#badge"/></svg></a>
     <ul>
+      <li><a href="#menu">Menu</a></li>
       <li><a href="#story">Our Story</a></li>
       <li><a href="#pit">The Pit</a></li>
-      <li><a href="#food">Food</a></li>
       <li><a href="#catering">Catering</a></li>
       <li><a href="#find">Find Us</a></li>
     </ul>
-    <a class="btn fire sm" href="#find">Find the Smoke</a>
+    <div class="nav-cta">
+      <a class="tray-pill" id="trayPill" href="#tray">Order <b id="trayCount">0</b></a>
+      <a class="btn fire sm" href="#menu">Order Ahead</a>
+    </div>
   </div>
 </nav>
 
 <header class="hero" id="top">
+  <canvas id="smoke" aria-hidden="true"></canvas>
   <div class="wrap">
     <div class="copy">
       <div class="label">Redmond, Oregon · Est. 2023</div>
-      <h1>Real smoke.<br>Real BBQ.<br><em>Real good.</em></h1>
-      <p class="lede">Texas-style brisket and spare ribs, smoked over oak on a 330-gallon offset that Johnny built by hand. Find the truck at Cinder Butte Meat Company in Redmond.</p>
+      <h1><span>Real smoke.</span><span>Real BBQ.</span><span><em>Real good.</em></span></h1>
+      <p class="lede">Texas-style brisket and spare ribs, smoked over oak on a 330-gallon offset that Johnny built by hand. Tuesday through Thursday at Cinder Butte Meat Company.</p>
       <div class="ctas">
-        <a class="btn fire" href="#find">Get Directions</a>
-        <a class="btn" href="#catering">Book Catering</a>
+        <a class="btn fire" href="#menu">See the Menu</a>
+        <a class="btn" href="#find">Get Directions</a>
       </div>
     </div>
-    <div class="hero-photo">
+    <div class="hero-photo" id="heroPhoto">
       <img src="img/brisket-sliced.jpg" alt="Sliced smoked brisket with a dark peppery bark and a pink smoke ring" width="1400" height="1258">
       <div class="tag">Usually sold out by 4 PM</div>
     </div>
   </div>
 </header>
 
-<div class="week" aria-label="Hours">
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span>Oak only</span><span>Salt &amp; pepper</span><span>330-gallon offset</span><span>12–16 hour brisket</span><span>Tue – Thu · 10 AM – 8 PM</span><span>Follow your nose</span>
+    <span>Oak only</span><span>Salt &amp; pepper</span><span>330-gallon offset</span><span>12–16 hour brisket</span><span>Tue – Thu · 10 AM – 8 PM</span><span>Follow your nose</span>
+  </div>
+</div>
+
+<div class="clock" aria-label="Hours and today's status">
   <div class="wrap">
-    <div class="status" id="status"><span class="dot"></span><span id="status-text">Tue – Thu · 10 AM</span></div>
+    <div class="status" id="status"><span class="dot"></span><div><b id="statusMain">Tue – Thu · 10 AM – 8 PM</b><small id="statusSub">197 NW Oneil Hwy, Redmond</small></div></div>
+    <div class="meter">
+      <div class="meter-top"><span>A typical day on the pit</span><span id="meterNote">Come early</span></div>
+      <div class="meter-bar"><span class="meter-now" id="meterNow" hidden></span></div>
+      <div class="meter-scale"><span>10 AM · Full pit</span><span>1 PM</span><span>3–4 PM · Selling out</span><span>8 PM</span></div>
+    </div>
     <div class="days" id="days">
       <div class="day">MON</div><div class="day on">TUE</div><div class="day on">WED</div><div class="day on">THU</div><div class="day">FRI</div><div class="day">SAT</div><div class="day">SUN</div>
     </div>
-    <div class="hours">10 AM – 8 PM<small>Meat sells out around 3–4 PM. Call ahead: <a href="tel:+15412808851">(541) 280-8851</a></small></div>
   </div>
+</div>
+
+<section class="menu" id="menu">
+  <div class="wrap">
+    <div class="menu-head reveal">
+      <div>
+        <div class="label">Straight off the board</div>
+        <h2>The Menu</h2>
+      </div>
+      <p>The full menu is on every day until it sells out. Build your order here, then call it in so it's waiting for you.</p>
+    </div>
+
+    <div class="feed reveal">
+      <div class="feed-q">How many are eating?</div>
+      <div class="stepper" role="group" aria-label="Number of people">
+        <button type="button" id="feedMinus" aria-label="Fewer people">−</button>
+        <output id="feedN" aria-live="polite">2</output>
+        <button type="button" id="feedPlus" aria-label="More people">+</button>
+      </div>
+      <div class="feed-say" id="feedSay"></div>
+      <button class="btn sm" type="button" id="feedAdd">Add to Order</button>
+    </div>
+
+    <div class="menu-grid">
+      <div class="board reveal">
+        <div class="tabs" role="tablist" aria-label="Menu sections">
+          <button class="tab" role="tab" id="tab-plates" aria-controls="panel" aria-selected="true" data-tab="plates">Plates</button>
+          <button class="tab" role="tab" id="tab-meats" aria-controls="panel" aria-selected="false" data-tab="meats">Meats</button>
+          <button class="tab" role="tab" id="tab-combos" aria-controls="panel" aria-selected="false" data-tab="combos">Combos</button>
+        </div>
+        <div class="panel" id="panel" role="tabpanel" aria-labelledby="tab-plates"></div>
+      </div>
+
+      <aside class="tray reveal" id="tray" aria-label="Your order">
+        <div class="tray-head"><h3>Your Order</h3><button type="button" id="clearTray">Clear</button></div>
+        <ul class="lines" id="lines"></ul>
+        <div class="empty" id="empty">Tap <b>+</b> on anything on the board to start an order.</div>
+        <div class="tray-foot">
+          <div class="total"><span>Total</span><b id="total">$0</b></div>
+          <div class="two">
+            <input type="text" id="orderName" placeholder="Your name" autocomplete="name" aria-label="Your name">
+            <input type="text" id="orderTime" placeholder="Pickup time" aria-label="Pickup time">
+          </div>
+          <button class="btn fire" type="button" id="copyOrder" disabled>Copy Order</button>
+          <a class="btn" href="tel:+15412808851">Call (541) 280-8851</a>
+          <div class="copied" id="copied" role="status"></div>
+          <div class="fine">Orders aren't placed online. Copy your order, then call it in. Pay at the window with tap or Apple Pay.</div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<div class="strip" aria-label="Photo gallery">
+  <button type="button" data-lb="img/bark.jpg"><img src="img/bark.jpg" alt="A whole brisket with a jet-black bark" loading="lazy"></button>
+  <button type="button" data-lb="img/ribs-glazed.jpg"><img src="img/ribs-glazed.jpg" alt="A glazed rack of spare ribs on foil" loading="lazy"></button>
+  <button type="button" data-lb="img/brisket-truck.jpg"><img src="img/brisket-truck.jpg" alt="Two thick brisket slices held up in front of the Smokin J's trailer" loading="lazy"></button>
+  <button type="button" data-lb="img/brisket-slice.jpg"><img src="img/brisket-slice.jpg" alt="A thick brisket slice held up to show the smoke ring" loading="lazy"></button>
+  <button type="button" data-lb="img/sandwich.jpg"><img src="img/sandwich.jpg" alt="A sandwich piled with smoked meat, sauce and coleslaw" loading="lazy"></button>
+  <button type="button" data-lb="img/turkey.jpg"><img src="img/turkey.jpg" alt="Smoked turkey breast sliced thin on a cutting board" loading="lazy"></button>
 </div>
 
 <section class="story" id="story">
   <div class="wrap">
-    <img src="img/johnny.jpg" alt="Johnny Barry, owner of Smokin J's BBQ, holding up brisket in front of the Smokin J's banner" loading="lazy" width="928" height="708">
-    <div>
+    <figure class="reveal"><img src="img/johnny.jpg" alt="Johnny Barry, owner of Smokin J's BBQ, holding up brisket in front of the Smokin J's banner" loading="lazy" width="928" height="708"></figure>
+    <div class="reveal">
       <div class="label">Our story</div>
       <h2>Meet Johnny.</h2>
       <p>At 18, Johnny Barry spent most of each year working on an off-grid farm where the hired cooks were vegetarian. Meat never made the menu. So every off season back home, he made up for it: steaks, ribs, pulled pork, anything that fit on the grill.</p>
@@ -245,7 +441,7 @@ footer .links { display: flex; gap: 20px; flex-wrap: wrap; }
 
 <section class="pit" id="pit">
   <div class="wrap">
-    <div>
+    <div class="reveal">
       <div class="label">Wood smoked the old west way</div>
       <h2>Oak, salt, pepper, and all night.</h2>
       <p>Everything cooks on a 330-gallon direct-flow offset smoker Johnny built himself, burning nothing but oak. The rub is Texas style, just salt and pepper, so the meat and the smoke do the talking. Briskets go on between midnight and 3 AM and cook 12 to 16 hours, depending on size.</p>
@@ -255,47 +451,18 @@ footer .links { display: flex; gap: 20px; flex-wrap: wrap; }
         <div class="fact"><b>12–16 hrs</b><span>Brisket cook</span></div>
       </div>
     </div>
-    <div class="pit-photos">
-      <img src="img/brisket-smoker.jpg" alt="Brisket with a dark bark resting on the smoker grate" loading="lazy" width="1050" height="1400">
-      <img src="img/offset-smoker.jpg" alt="The Smokin J's offset smoker trailer under a blue Central Oregon sky" loading="lazy" width="1400" height="1050">
-      <img src="img/loaded-pit.jpg" alt="Ribs, pork and chicken across the grate of the open smoker" loading="lazy" width="1400" height="1050">
+    <div class="pit-photos reveal">
+      <button type="button" data-lb="img/brisket-smoker.jpg"><img src="img/brisket-smoker.jpg" alt="Brisket with a dark bark resting on the smoker grate" loading="lazy" width="1050" height="1400"></button>
+      <button type="button" data-lb="img/offset-smoker.jpg"><img src="img/offset-smoker.jpg" alt="The hand-built offset smoker under a blue Central Oregon sky" loading="lazy" width="1400" height="1050"></button>
+      <button type="button" data-lb="img/loaded-pit.jpg"><img src="img/loaded-pit.jpg" alt="Ribs and other cuts across the grate of the open smoker" loading="lazy" width="1400" height="1050"></button>
     </div>
   </div>
 </section>
-
-<section class="food" id="food">
-  <div class="wrap">
-    <div class="food-head">
-      <div>
-        <div class="label">Off the pit</div>
-        <h2>What we're smoking</h2>
-      </div>
-      <p>The full menu is on every day. Brisket and spare ribs are the two people line up for. Want to make sure you get some? Call ahead to pre-order: <a href="tel:+15412808851">(541) 280-8851</a>.</p>
-    </div>
-    <div class="plates">
-      <figure class="plate"><img src="img/brisket-truck.jpg" alt="Two thick slices of brisket held up in front of the Smokin J's trailer" loading="lazy" width="1050" height="1400"><figcaption><b>Brisket</b><span>Salt, pepper, oak, 12 to 16 hours.</span></figcaption></figure>
-      <figure class="plate"><img src="img/ribs.jpg" alt="A box of sauced, sliced pork ribs with a glossy glaze" loading="lazy" width="1050" height="1400"><figcaption><b>Spare Ribs</b><span>Neck and neck with the brisket for the top spot.</span></figcaption></figure>
-      <figure class="plate"><img src="img/sandwich.jpg" alt="A BBQ sandwich piled with smoked meat, sauce and coleslaw" loading="lazy" width="1050" height="1400"><figcaption><b>Sandwiches</b><span>Piled high and topped with slaw.</span></figcaption></figure>
-      <figure class="plate"><img src="img/turkey.jpg" alt="Smoked turkey breast sliced thin on a cutting board" loading="lazy" width="1050" height="1400"><figcaption><b>Smoked Turkey</b><span>Juicy breast, sliced thin.</span></figcaption></figure>
-      <figure class="plate"><img src="img/tri-tip.jpg" alt="Seasoned tri-tips going onto the smoker" loading="lazy" width="1400" height="1050"><figcaption><b>Tri-Tip</b><span>A Pacific Northwest favorite.</span></figcaption></figure>
-      <figure class="plate"><img src="img/pork-smoker.jpg" alt="Rubbed pork cuts lined up on the smoker" loading="lazy" width="1051" height="1400"><figcaption><b>Pork</b><span>Rubbed red and smoked low.</span></figcaption></figure>
-    </div>
-  </div>
-</section>
-
-<div class="strip" aria-label="More from the pit">
-  <img src="img/bark.jpg" alt="A whole brisket with a jet-black bark" loading="lazy">
-  <img src="img/ribs-glazed.jpg" alt="A glazed rack of ribs on foil" loading="lazy">
-  <img src="img/chopped.jpg" alt="A pan of chopped smoked beef" loading="lazy">
-  <img src="img/brisket-slice.jpg" alt="A thick brisket slice held up to show the smoke ring" loading="lazy">
-  <img src="img/roast.jpg" alt="A smoked beef roast cut open on a wooden board" loading="lazy">
-  <img src="img/trailer.jpg" alt="The Smokin J's trailer parked under a blue sky" loading="lazy">
-</div>
 
 <section class="cater" id="catering">
   <div class="wrap">
-    <img src="img/chopped.jpg" alt="A full hotel pan of chopped smoked beef ready for a catered event" loading="lazy" width="1050" height="1400">
-    <div>
+    <img class="reveal" src="img/chopped.jpg" alt="A full hotel pan of chopped smoked beef ready for a catered event" loading="lazy" width="1050" height="1400">
+    <div class="reveal">
       <div class="label">Weddings · Events · Work lunches</div>
       <h2>Too hot to cook? Take the night off.</h2>
       <p>Smokin J's caters groups of 50 to 300 across Central Oregon. Bring the truck to your event, or pick up pans of brisket and ribs and serve it yourself.</p>
@@ -315,26 +482,26 @@ footer .links { display: flex; gap: 20px; flex-wrap: wrap; }
         <a class="btn fire" href="mailto:offsetstickburner@gmail.com?subject=Catering%20request&amp;body=Date%3A%0AHeadcount%3A%0ALocation%3A%0ATruck%20on%20site%2C%20pickup%2C%20or%20drop-off%3A%0A">Email for Catering</a>
         <a class="btn" href="tel:+15412808851">Call (541) 280-8851</a>
       </div>
-      <div class="callout">Or email <span class="email" style="font-size:inherit">offsetstickburner@gmail.com</span> with your date, headcount and location.</div>
+      <div class="callout">Or email <b>offsetstickburner@gmail.com</b> with your date, headcount and location.</div>
     </div>
   </div>
 </section>
 
 <section class="find" id="find">
   <div class="wrap">
-    <div>
+    <div class="reveal">
       <div class="label">Where to find us</div>
       <h2>Follow your nose.</h2>
       <div class="addr">197 NW Oneil Hwy<br>Redmond, OR 97756</div>
-      <div class="addr-sub">At Cinder Butte Meat Company · 10 AM – 8 PM · Open year-round</div>
+      <div class="addr-sub">At Cinder Butte Meat Company · Tue – Thu · 10 AM – 8 PM · Year-round</div>
       <div class="ctas">
         <a class="btn fire" href="https://www.google.com/maps/search/?api=1&amp;query=197+NW+Oneil+Hwy%2C+Redmond%2C+OR+97756" target="_blank" rel="noopener">Open in Maps</a>
-        <a class="btn" href="tel:+15412808851">Call to Pre-Order</a>
+        <a class="btn" href="https://www.facebook.com/p/Smokin-Js-BBQ-61557063061645/" target="_blank" rel="noopener">Facebook</a>
       </div>
       <div class="callout">Tap to pay and Apple Pay accepted.</div>
       <div class="motto">Find the smoke.<br>You won't regret it.</div>
     </div>
-    <img src="img/cinder-butte.jpg" alt="The Smokin J's trailer parked beside the Cinder Butte Meat Company sign" loading="lazy" width="1400" height="1050">
+    <img class="reveal" src="img/cinder-butte.jpg" alt="The Smokin J's trailer parked beside the Cinder Butte Meat Company sign" loading="lazy" width="1400" height="1050">
   </div>
 </section>
 
@@ -350,29 +517,349 @@ footer .links { display: flex; gap: 20px; flex-wrap: wrap; }
   </div>
 </footer>
 
+<dialog id="pickDlg" aria-labelledby="pickTitle">
+  <form method="dialog">
+    <div class="dlg-head"><h3 id="pickTitle"></h3><p id="pickSub"></p></div>
+    <div class="dlg-body" id="pickBody"></div>
+    <div class="dlg-foot">
+      <button class="btn sm" value="cancel" type="submit">Cancel</button>
+      <button class="btn fire sm" id="pickOk" value="ok" type="submit">Add · <span id="pickPrice"></span></button>
+    </div>
+  </form>
+</dialog>
+
+<dialog class="lightbox" id="lb" aria-label="Photo viewer">
+  <img id="lbImg" alt="">
+  <div class="lb-bar"><p id="lbCap"></p><div><button type="button" id="lbPrev" aria-label="Previous photo">‹</button><button type="button" id="lbNext" aria-label="Next photo">›</button><button type="button" id="lbClose" aria-label="Close">✕</button></div></div>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
 <script>
+document.documentElement.classList.add('js');
 (() => {
-  // Open status in Redmond's time zone: Tue–Thu, 10 AM to 8 PM.
-  const parts = Object.fromEntries(new Intl.DateTimeFormat('en-US', {
-    timeZone: 'America/Los_Angeles', weekday: 'short', hour: 'numeric', hour12: false
-  }).formatToParts(new Date()).map(p => [p.type, p.value]));
-  const order = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-  const idx = order.indexOf(parts.weekday);
-  const hour = parseInt(parts.hour, 10) % 24;
-  const days = document.querySelectorAll('#days .day');
-  if (idx >= 0) days[idx].classList.add('today');
-  const serving = idx >= 1 && idx <= 3;
-  const status = document.getElementById('status');
-  const text = document.getElementById('status-text');
-  if (serving && hour >= 10 && hour < 20) {
-    status.classList.add('open');
-    text.textContent = 'Open now till 8 PM';
-  } else if (serving && hour < 10) {
-    text.textContent = 'Opens today at 10 AM';
-  } else {
-    const next = idx === 0 ? 'tomorrow' : (idx >= 1 && idx <= 2 ? 'tomorrow' : 'Tuesday');
-    text.textContent = 'Back ' + next + ' at 10 AM';
+  const $ = s => document.querySelector(s);
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const money = n => '$' + n;
+
+  /* ---------- Menu, from Johnny's board (Oct 2026) ---------- */
+  const MEATS = ['Brisket', 'Pulled Pork', 'Spare Ribs', 'Turkey Breast'];
+  const SIDES = ['Potato Salad', 'Pork & Beans', 'Cole Slaw', 'Pasta Salad'];
+  const MENU = {
+    plates: { note: 'Plates', items: [
+      { id: 'p1', name: '1 Meat, 1 Side', price: 19, desc: 'Pick any meat and a house-made side.', meats: 1, sides: 1, img: 'img/brisket-truck.jpg' },
+      { id: 'p2', name: '2 Meats, 2 Sides', price: 24, desc: "Two meats, two sides. The move if you can't decide.", meats: 2, sides: 2, img: 'img/ribs.jpg' },
+      { id: 'pps', name: 'Pulled Pork Sando + 1 Side', price: 19, desc: 'Smoked pulled pork on a bun.', sides: 1, img: 'img/sandwich.jpg' },
+      { id: 'bs', name: 'Brisket Sando + 1 Side', price: 22, desc: 'Sliced brisket on a bun.', sides: 1, img: 'img/brisket-slice.jpg' }
+    ]},
+    meats: { note: 'By the ½ lb', items: [
+      { id: 'mb', name: 'Brisket', unit: '½ lb', price: 19, desc: 'Salt, pepper, oak, 12 to 16 hours.', img: 'img/brisket-truck.jpg' },
+      { id: 'mp', name: 'Pulled Pork', unit: '½ lb', price: 16, desc: 'Smoked low and pulled by hand.', img: 'img/sandwich.jpg' },
+      { id: 'mrh', name: 'Spare Ribs, ½ Rack', price: 20, desc: 'Neck and neck with the brisket for the top spot.', img: 'img/ribs.jpg' },
+      { id: 'mrw', name: 'Spare Ribs, Whole Rack', price: 32, desc: 'The whole rack.', img: 'img/ribs-glazed.jpg' },
+      { id: 'mt', name: 'Turkey Breast', unit: '½ lb', price: 16, desc: 'Juicy breast, sliced thin.', img: 'img/turkey.jpg' },
+      { id: 'sd', name: 'Side', price: 5, desc: SIDES.join(', ') + '.', pickSide: true },
+      { id: 'w', name: 'Water', price: 2, desc: 'Bottled water.' }
+    ]},
+    combos: { note: 'Feed the crew', items: [
+      { id: 'lp', name: 'Little Piggy', price: 65, desc: '½ lb brisket, ½ rack, ½ lb turkey, 3 sides. Feeds 2–3.', sides: 3, img: 'img/loaded-pit.jpg' },
+      { id: 'bp', name: 'Big Piggy', price: 85, desc: '½ lb brisket, ½ lb turkey, ½ rack, ½ lb pulled pork, 4 sides. Feeds 3–5.', sides: 4, img: 'img/bark.jpg' }
+    ]}
+  };
+  const byId = Object.fromEntries(Object.values(MENU).flatMap(s => s.items).map(i => [i.id, i]));
+  const label = it => it.name + (it.unit ? ' (' + it.unit + ')' : '');
+
+  /* ---------- Board tabs ---------- */
+  const panel = $('#panel');
+  let tab = 'plates';
+  function renderPanel() {
+    const sec = MENU[tab];
+    panel.innerHTML = `<p class="note">${sec.note}</p><div class="items">` + sec.items.map(it => `
+      <div class="item">
+        ${it.img ? `<img class="thumb" src="${it.img}" alt="" loading="lazy">` : `<span class="thumb blank">✦</span>`}
+        <div><div class="nm">${it.name}</div><div class="ds">${it.desc}</div></div>
+        <div class="pr">${it.price}</div>
+        <button class="add" type="button" data-add="${it.id}" aria-label="Add ${it.name} to order">+</button>
+      </div>`).join('') + `</div>` +
+      `<div class="sides-line">House-made sides: <span>${SIDES.join(' · ')}</span> · Side 5 · Water 2</div>`;
+    panel.setAttribute('aria-labelledby', 'tab-' + tab);
   }
+  const tabs = [...document.querySelectorAll('.tab')];
+  tabs.forEach(b => b.addEventListener('click', () => {
+    tab = b.dataset.tab;
+    tabs.forEach(x => x.setAttribute('aria-selected', String(x === b)));
+    renderPanel();
+  }));
+  $('.tabs').addEventListener('keydown', e => {
+    if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+    const i = tabs.findIndex(t => t.getAttribute('aria-selected') === 'true');
+    const n = tabs[(i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length];
+    n.click(); n.focus();
+  });
+  renderPanel();
+
+  /* ---------- Order tray ---------- */
+  const KEY = 'smokinjs-order-v1';
+  let order = [];
+  try { order = JSON.parse(localStorage.getItem(KEY) || '[]').filter(l => byId[l.id] && l.qty > 0); } catch (e) { order = []; }
+  const save = () => { try { localStorage.setItem(KEY, JSON.stringify(order)); } catch (e) {} };
+  const sum = () => order.reduce((a, l) => a + byId[l.id].price * l.qty, 0);
+
+  function addLine(id, detail) {
+    const same = order.find(l => l.id === id && l.detail === detail);
+    if (same) same.qty++; else order.push({ id, detail, qty: 1 });
+    save(); renderTray(); toast('Added ' + byId[id].name);
+  }
+  function renderTray() {
+    $('#lines').innerHTML = order.map((l, i) => {
+      const it = byId[l.id];
+      return `<li>
+        <div class="ln-name">${label(it)}</div>
+        <div class="ln-price">${money(it.price * l.qty)}</div>
+        <div class="ln-det">${l.detail || ''}</div>
+        <div class="qty"><button type="button" data-q="${i}" data-d="-1" aria-label="One less ${it.name}">−</button><span>${l.qty}</span><button type="button" data-q="${i}" data-d="1" aria-label="One more ${it.name}">+</button></div>
+      </li>`;
+    }).join('');
+    const count = order.reduce((a, l) => a + l.qty, 0);
+    $('#total').textContent = money(sum());
+    $('#empty').hidden = order.length > 0;
+    $('#copyOrder').disabled = order.length === 0;
+    $('#trayCount').textContent = count;
+    $('#trayPill').classList.toggle('has', count > 0);
+    $('#copied').textContent = '';
+  }
+  $('#lines').addEventListener('click', e => {
+    const b = e.target.closest('[data-q]'); if (!b) return;
+    const i = +b.dataset.q; order[i].qty += +b.dataset.d;
+    if (order[i].qty <= 0) order.splice(i, 1);
+    save(); renderTray();
+  });
+  $('#clearTray').addEventListener('click', () => { order = []; save(); renderTray(); });
+
+  function orderText() {
+    const name = $('#orderName').value.trim(), time = $('#orderTime').value.trim();
+    const out = ["Smokin J's BBQ pre-order"];
+    if (name) out.push('Name: ' + name);
+    if (time) out.push('Pickup: ' + time);
+    out.push('');
+    for (const l of order) {
+      const it = byId[l.id];
+      out.push(`${l.qty} x ${label(it)} - ${money(it.price * l.qty)}`);
+      if (l.detail) out.push('    ' + l.detail);
+    }
+    out.push('', 'Total: ' + money(sum()));
+    return out.join('\n');
+  }
+  $('#copyOrder').addEventListener('click', async () => {
+    const t = orderText();
+    try { await navigator.clipboard.writeText(t); $('#copied').textContent = 'Order copied. Call it in at (541) 280-8851.'; }
+    catch (e) { window.prompt('Copy your order:', t); }
+  });
+
+  /* ---------- Pick meats / sides ---------- */
+  const dlg = $('#pickDlg');
+  let pending = null, afterPick = null;
+  function chipGroup(text, opts, count, key) {
+    return `<div class="pick" data-key="${key}" data-count="${count}"><span>${text}</span><div class="chips">` +
+      opts.map(o => `<button type="button" aria-pressed="false" data-v="${o}">${o}</button>`).join('') + `</div></div>`;
+  }
+  function openPick(it, then) {
+    pending = it; afterPick = then || null;
+    $('#pickTitle').textContent = it.name;
+    $('#pickSub').textContent = it.desc;
+    $('#pickPrice').textContent = money(it.price);
+    const parts = [];
+    if (it.meats) parts.push(chipGroup(it.meats === 1 ? 'Pick your meat' : `Pick ${it.meats} meats`, MEATS, it.meats, 'meats'));
+    if (it.sides) parts.push(chipGroup(it.sides === 1 ? 'Pick your side' : `Pick ${it.sides} sides · tap twice to double up`, SIDES, it.sides, 'sides'));
+    if (it.pickSide) parts.push(chipGroup('Which side?', SIDES, 1, 'sides'));
+    $('#pickBody').innerHTML = parts.join('');
+    $('#pickBody').querySelectorAll('.pick').forEach(g => { g._sel = []; });
+    validate();
+    dlg.returnValue = '';
+    dlg.showModal();
+  }
+  $('#pickBody').addEventListener('click', e => {
+    const b = e.target.closest('.chips button'); if (!b) return;
+    const g = b.closest('.pick'), max = +g.dataset.count, v = b.dataset.v, sel = g._sel;
+    const dup = g.dataset.key === 'sides' && max > 1;
+    if (max === 1) { sel.length = 0; sel.push(v); }
+    else if (dup) {
+      // Sides: add until full; once full, tapping a picked side removes one of it.
+      if (sel.length < max) sel.push(v); else if (sel.includes(v)) sel.splice(sel.lastIndexOf(v), 1);
+    } else {
+      if (sel.includes(v)) sel.splice(sel.indexOf(v), 1); else if (sel.length < max) sel.push(v);
+    }
+    g.querySelectorAll('button').forEach(x => {
+      const n = sel.filter(s => s === x.dataset.v).length;
+      x.setAttribute('aria-pressed', String(n > 0));
+      x.textContent = x.dataset.v + (n > 1 ? ' ×' + n : '');
+    });
+    validate();
+  });
+  function validate() {
+    $('#pickOk').disabled = ![...$('#pickBody').querySelectorAll('.pick')].every(g => g._sel.length === +g.dataset.count);
+  }
+  dlg.addEventListener('close', () => {
+    const it = pending, then = afterPick;
+    pending = null; afterPick = null;
+    if (dlg.returnValue !== 'ok' || !it) return;
+    const det = [...$('#pickBody').querySelectorAll('.pick')].map(g => g._sel.join(', ')).join(' · ');
+    addLine(it.id, det);
+    if (then) setTimeout(then, 60);
+  });
+  panel.addEventListener('click', e => {
+    const b = e.target.closest('[data-add]'); if (!b) return;
+    const it = byId[b.dataset.add];
+    if (it.meats || it.sides || it.pickSide) openPick(it); else addLine(it.id, '');
+  });
+
+  /* ---------- How many are eating ---------- */
+  let feedN = 2;
+  function plan(n) {
+    if (n <= 1) return null;
+    let best = null;
+    for (let b = 0; b <= 6; b++) for (let l = 0; l <= 6; l++) {
+      if (b + l === 0 || 5 * b + 3 * l < n) continue;
+      const cost = 85 * b + 65 * l;
+      if (!best || cost < best.cost || (cost === best.cost && b + l < best.b + best.l)) best = { b, l, cost };
+    }
+    return best;
+  }
+  function renderFeed() {
+    $('#feedN').textContent = feedN >= 20 ? '20+' : feedN;
+    if (feedN >= 20) {
+      $('#feedSay').innerHTML = 'Feeding a crowd? <b>Catering</b> covers groups of 50 to 300.';
+      $('#feedAdd').textContent = 'See Catering';
+      return;
+    }
+    $('#feedAdd').textContent = 'Add to Order';
+    const p = plan(feedN);
+    if (!p) { $('#feedSay').innerHTML = 'Grab a <b>1 Meat, 1 Side</b> plate for <b>$19</b>.'; return; }
+    const parts = [];
+    if (p.b) parts.push(`${p.b > 1 ? p.b + ' × ' : ''}<b>Big Piggy</b>`);
+    if (p.l) parts.push(`${p.l > 1 ? p.l + ' × ' : ''}<b>Little Piggy</b>`);
+    $('#feedSay').innerHTML = `${parts.join(' + ')} feeds ${feedN} for <b>${money(p.cost)}</b>.`;
+  }
+  $('#feedMinus').addEventListener('click', () => { feedN = Math.max(1, feedN - 1); renderFeed(); });
+  $('#feedPlus').addEventListener('click', () => { feedN = Math.min(20, feedN + 1); renderFeed(); });
+  $('#feedAdd').addEventListener('click', () => {
+    if (feedN >= 20) { document.getElementById('catering').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' }); return; }
+    const p = plan(feedN);
+    if (!p) { openPick(byId.p1); return; }
+    const queue = [...Array(p.b).fill('bp'), ...Array(p.l).fill('lp')];
+    const next = () => { const id = queue.shift(); if (id) openPick(byId[id], next); };
+    next();
+  });
+  renderFeed();
+  renderTray();
+
+  /* ---------- Pit clock, Redmond time ---------- */
+  function tick() {
+    const parts = Object.fromEntries(new Intl.DateTimeFormat('en-US', {
+      timeZone: 'America/Los_Angeles', weekday: 'short', hour: 'numeric', minute: 'numeric', hour12: false
+    }).formatToParts(new Date()).map(p => [p.type, p.value]));
+    const d = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].indexOf(parts.weekday);
+    const mins = (parseInt(parts.hour, 10) % 24) * 60 + parseInt(parts.minute, 10);
+    document.querySelectorAll('#days .day').forEach((el, i) => el.classList.toggle('today', i === d));
+    const serving = d >= 1 && d <= 3, open = 600, close = 1200;
+    const fmt = m => (m >= 60 ? Math.floor(m / 60) + 'h ' : '') + (m % 60) + 'm';
+    const st = $('#status'), main = $('#statusMain'), sub = $('#statusSub'), now = $('#meterNow'), note = $('#meterNote');
+    st.classList.remove('open');
+    now.hidden = true;
+    if (serving && mins >= open && mins < close) {
+      st.classList.add('open');
+      main.textContent = 'Open now';
+      sub.textContent = 'Closes in ' + fmt(close - mins) + ', or when the meat runs out';
+      now.hidden = false;
+      now.style.left = ((mins - open) / (close - open) * 100) + '%';
+      note.textContent = mins < 780 ? 'Good time to come' : mins < 900 ? 'Selling fast · call ahead' : "Call to check what's left";
+    } else if (serving && mins < open) {
+      main.textContent = 'Opens today at 10 AM';
+      sub.textContent = 'In ' + fmt(open - mins) + ". The brisket's already on.";
+      note.textContent = 'Come early';
+    } else {
+      main.textContent = 'Closed · back ' + (d >= 0 && d <= 2 ? 'tomorrow' : 'Tuesday');
+      sub.textContent = 'Tue – Thu · 10 AM – 8 PM';
+      note.textContent = 'Come early';
+    }
+  }
+  tick(); setInterval(tick, 30000);
+
+  /* ---------- Lightbox ---------- */
+  const shots = [...document.querySelectorAll('[data-lb]')];
+  const lb = $('#lb'); let li = 0;
+  function show(i) {
+    li = (i + shots.length) % shots.length;
+    const img = shots[li].querySelector('img');
+    $('#lbImg').src = shots[li].dataset.lb; $('#lbImg').alt = img.alt; $('#lbCap').textContent = img.alt;
+  }
+  shots.forEach((b, i) => b.addEventListener('click', () => { show(i); lb.showModal(); }));
+  $('#lbPrev').addEventListener('click', () => show(li - 1));
+  $('#lbNext').addEventListener('click', () => show(li + 1));
+  $('#lbClose').addEventListener('click', () => lb.close());
+  lb.addEventListener('click', e => { if (e.target === lb) lb.close(); });
+  lb.addEventListener('keydown', e => { if (e.key === 'ArrowLeft') show(li - 1); if (e.key === 'ArrowRight') show(li + 1); });
+
+  /* ---------- Toast ---------- */
+  let tt;
+  function toast(msg) { const t = $('#toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(tt); tt = setTimeout(() => t.classList.remove('show'), 1600); }
+
+  /* ---------- Reveal on scroll ---------- */
+  const reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
+    reveals.forEach(el => io.observe(el));
+  } else reveals.forEach(el => el.classList.add('in'));
+
+  /* ---------- Hero photo tilt ---------- */
+  const hp = $('#heroPhoto');
+  if (!reduce && matchMedia('(pointer: fine)').matches) {
+    hp.addEventListener('mousemove', e => {
+      const r = hp.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+      hp.style.transform = `perspective(900px) rotateY(${x * 6}deg) rotateX(${-y * 6}deg)`;
+    });
+    hp.addEventListener('mouseleave', () => { hp.style.transform = ''; });
+  }
+
+  /* ---------- Smoke + embers ---------- */
+  const c = $('#smoke'), ctx = c.getContext('2d');
+  let w, h, puffs = [], embers = [], wind = 0, windT = 0;
+  function size() { const dpr = Math.min(devicePixelRatio || 1, 2); w = c.clientWidth; h = c.clientHeight; c.width = w * dpr; c.height = h * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); }
+  const puff = y => ({ x: w * (.35 + Math.random() * .7), y: y ?? h + 60, r: 50 + Math.random() * 110, vy: .25 + Math.random() * .45, vx: -.15 + Math.random() * .3, a: .035 + Math.random() * .05, ph: Math.random() * 6.28 });
+  const ember = () => ({ x: w * (.2 + Math.random() * .8), y: h + 10, vy: .6 + Math.random() * 1.4, vx: -.3 + Math.random() * .6, life: 0, max: 180 + Math.random() * 220, s: .8 + Math.random() * 1.8, ph: Math.random() * 6.28 });
+  size();
+  for (let i = 0; i < 22; i++) puffs.push(puff(Math.random() * h));
+  for (let i = 0; i < 26; i++) { const e = ember(); e.y = Math.random() * h; e.life = Math.random() * e.max; embers.push(e); }
+  addEventListener('resize', size);
+  const hero = c.parentElement;
+  hero.addEventListener('mousemove', e => { const r = c.getBoundingClientRect(); windT = ((e.clientX - r.left) / r.width - .5) * 2.2; });
+  hero.addEventListener('mouseleave', () => { windT = 0; });
+  function frame(t) {
+    wind += (windT - wind) * .03;
+    ctx.clearRect(0, 0, w, h);
+    ctx.globalCompositeOperation = 'source-over';
+    for (const p of puffs) {
+      p.y -= p.vy; p.x += p.vx + wind * .6 + Math.sin(t / 2600 + p.ph) * .3; p.r += .14;
+      const fade = Math.max(0, Math.min(1, p.y / h));
+      const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r);
+      g.addColorStop(0, `rgba(215,200,180,${p.a * fade})`); g.addColorStop(1, 'rgba(215,200,180,0)');
+      ctx.fillStyle = g; ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, 6.283); ctx.fill();
+      if (p.y + p.r < 0 || p.x - p.r > w + 100 || p.x + p.r < -100) Object.assign(p, puff());
+    }
+    ctx.globalCompositeOperation = 'lighter';
+    for (const e of embers) {
+      e.life++; e.y -= e.vy; e.x += e.vx + wind * 1.4 + Math.sin(t / 400 + e.ph) * .35;
+      const k = 1 - e.life / e.max;
+      if (k <= 0 || e.y < -10) { Object.assign(e, ember()); continue; }
+      const flick = .6 + .4 * Math.sin(t / 90 + e.ph);
+      ctx.fillStyle = `rgba(255,${(120 + 60 * k) | 0},50,${.85 * k * flick})`;
+      ctx.beginPath(); ctx.arc(e.x, e.y, e.s, 0, 6.283); ctx.fill();
+      ctx.fillStyle = `rgba(226,104,59,${.12 * k * flick})`;
+      ctx.beginPath(); ctx.arc(e.x, e.y, e.s * 5, 0, 6.283); ctx.fill();
+    }
+    if (!reduce) requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
 })();
 </script>
 </body>
