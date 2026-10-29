@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Smokin J's BBQ | Redmond, Oregon</title>
-<meta name="description" content="Wood-smoked BBQ off an offset stick burner in Redmond, Oregon. Brisket, ribs and more, Tuesday through Thursday from 10 AM till it sells out at Cinder Butte Meat Company.">
+<meta name="description" content="Wood-smoked BBQ off an offset stick burner in Redmond, Oregon. Oak-smoked brisket and spare ribs on a hand-built offset smoker in Redmond, Oregon. 10 AM to 8 PM at Cinder Butte Meat Company. Catering for 50 to 300 across Central Oregon.">
 <meta property="og:title" content="Smokin J's BBQ | Redmond, Oregon">
-<meta property="og:description" content="Real smoke. Real BBQ. Real good. Tue–Thu, 10 AM till sold out at 197 NW Oneil Hwy.">
+<meta property="og:description" content="Real smoke. Real BBQ. Real good. Oak-smoked in Redmond, Oregon, at 197 NW Oneil Hwy.">
 <meta property="og:image" content="https://jaakoby.github.io/smokinjs-bbq/img/brisket-sliced.jpg">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#14100d">
@@ -98,7 +98,7 @@ nav ul a:hover { color: var(--cream); }
 .pit p { color: var(--cream-dim); max-width: 46ch; margin: 18px 0 0; }
 .facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin-top: 32px; border-top: 1px solid var(--line); }
 .fact { padding: 16px 12px 0 0; }
-.fact b { display: block; font-family: var(--slab); font-weight: 400; font-size: clamp(26px, 3vw, 34px); color: var(--cream); line-height: 1.1; }
+.fact b { display: block; white-space: nowrap; font-family: var(--slab); font-weight: 400; font-size: clamp(22px, 2.6vw, 30px); color: var(--cream); line-height: 1.1; }
 .fact span { font-family: var(--cond); font-weight: 800; font-size: 14px; letter-spacing: .14em; text-transform: uppercase; color: var(--cream-dim); }
 @media (max-width: 860px) { .pit .wrap { grid-template-columns: minmax(0, 1fr); } .pit-photos { order: 2; } }
 
@@ -122,9 +122,25 @@ nav ul a:hover { color: var(--cream); }
 .strip img { width: 100%; aspect-ratio: 1; object-fit: cover; }
 @media (max-width: 760px) { .strip { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 
+/* Story */
+.story { background: var(--char-2); border-block: 1px solid var(--line); }
+.story .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 72px); align-items: center; padding-block: clamp(64px, 9vw, 120px); }
+.story img { width: 100%; aspect-ratio: 928 / 708; object-fit: cover; border-radius: 2px; }
+.story p { color: var(--cream-dim); max-width: 54ch; margin: 18px 0 0; }
+.story blockquote { margin: 28px 0 0; padding: 0 0 0 20px; border-left: 3px solid var(--blood-hi); font-family: var(--slab); font-size: clamp(20px, 2.2vw, 25px); line-height: 1.3; color: var(--cream); max-width: 34ch; }
+.story .sig { margin-top: 14px; font-family: var(--cond); font-weight: 800; font-size: 16px; letter-spacing: .14em; text-transform: uppercase; color: var(--blood-hi); }
+@media (max-width: 860px) { .story .wrap { grid-template-columns: minmax(0, 1fr); } }
+.cater dl { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; margin: 0 0 28px; border-top: 1px solid var(--line); }
+.cater dl div { padding: 14px 12px 14px 0; border-bottom: 1px solid var(--line); }
+.cater dt { font-family: var(--cond); font-weight: 800; font-size: 14px; letter-spacing: .14em; text-transform: uppercase; color: var(--cream-dim); }
+.cater dd { margin: 2px 0 0; font-family: var(--slab); font-size: 21px; line-height: 1.2; }
+.phone { font-family: var(--cond); font-weight: 800; font-size: 22px; letter-spacing: .04em; text-decoration: none; }
+.callout { margin-top: 18px; font-size: 15px; color: var(--cream-dim); }
+.callout a { color: var(--cream); font-weight: 700; }
+
 /* Catering */
 .cater .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 72px); align-items: center; padding-block: clamp(64px, 9vw, 120px); }
-.cater img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: 50% 40%; border-radius: 2px; }
+.cater img { width: 100%; aspect-ratio: 4 / 4.6; object-fit: cover; object-position: 50% 40%; border-radius: 2px; }
 .cater p { color: var(--cream-dim); max-width: 46ch; margin: 18px 0 24px; }
 .cater ul { list-style: none; margin: 0 0 28px; padding: 0; display: grid; gap: 10px; }
 .cater li { display: flex; gap: 12px; align-items: baseline; }
@@ -175,6 +191,7 @@ footer .links { display: flex; gap: 20px; flex-wrap: wrap; }
   <div class="wrap">
     <a class="logo" href="#top" aria-label="Smokin J's BBQ, back to top"><svg viewBox="0 0 300 110"><use href="#badge"/></svg></a>
     <ul>
+      <li><a href="#story">Our Story</a></li>
       <li><a href="#pit">The Pit</a></li>
       <li><a href="#food">Food</a></li>
       <li><a href="#catering">Catering</a></li>
@@ -189,15 +206,15 @@ footer .links { display: flex; gap: 20px; flex-wrap: wrap; }
     <div class="copy">
       <div class="label">Redmond, Oregon · Est. 2023</div>
       <h1>Real smoke.<br>Real BBQ.<br><em>Real good.</em></h1>
-      <p class="lede">Brisket, ribs and more, wood smoked the old west way on an offset stick burner. Find us at Cinder Butte Meat Company every Tuesday through Thursday.</p>
+      <p class="lede">Texas-style brisket and spare ribs, smoked over oak on a 330-gallon offset that Johnny built by hand. Find the truck at Cinder Butte Meat Company in Redmond.</p>
       <div class="ctas">
         <a class="btn fire" href="#find">Get Directions</a>
-        <a class="btn" href="#food">See the Food</a>
+        <a class="btn" href="#catering">Book Catering</a>
       </div>
     </div>
     <div class="hero-photo">
       <img src="img/brisket-sliced.jpg" alt="Sliced smoked brisket with a dark peppery bark and a pink smoke ring" width="1400" height="1258">
-      <div class="tag">Smoked fresh. Gone by close.</div>
+      <div class="tag">Usually sold out by 4 PM</div>
     </div>
   </div>
 </header>
@@ -208,20 +225,34 @@ footer .links { display: flex; gap: 20px; flex-wrap: wrap; }
     <div class="days" id="days">
       <div class="day">MON</div><div class="day on">TUE</div><div class="day on">WED</div><div class="day on">THU</div><div class="day">FRI</div><div class="day">SAT</div><div class="day">SUN</div>
     </div>
-    <div class="hours">10 AM till sold out<small>197 NW Oneil Hwy, Redmond</small></div>
+    <div class="hours">10 AM – 8 PM<small>Meat sells out around 3–4 PM. Call ahead: <a href="tel:+15412808851">(541) 280-8851</a></small></div>
   </div>
 </div>
+
+<section class="story" id="story">
+  <div class="wrap">
+    <img src="img/johnny.jpg" alt="Johnny Barry, owner of Smokin J's BBQ, holding up brisket in front of the Smokin J's banner" loading="lazy" width="928" height="708">
+    <div>
+      <div class="label">Our story</div>
+      <h2>Meet Johnny.</h2>
+      <p>At 18, Johnny Barry spent most of each year working on an off-grid farm where the hired cooks were vegetarian. Meat never made the menu. So every off season back home, he made up for it: steaks, ribs, pulled pork, anything that fit on the grill.</p>
+      <p>Eventually he bought his first smoker. He cooked his first brisket at 21, and that's when he knew BBQ was more than a hobby. Years of feeding friends and family turned into catering. Catering turned into pop-ups, and pop-ups turned into the truck. The J in Smokin J's is for Johnny.</p>
+      <blockquote>"There's never any shortcuts taken here. Every ounce of seasoning, every slice of the knife, every split that fuels the fire is all out of passion."</blockquote>
+      <div class="sig">Johnny Barry · Pitmaster &amp; owner</div>
+    </div>
+  </div>
+</section>
 
 <section class="pit" id="pit">
   <div class="wrap">
     <div>
       <div class="label">Wood smoked the old west way</div>
-      <h2>No gas. No pellets. Just wood and time.</h2>
-      <p>Every brisket and rack of ribs cooks on an offset stick burner fed with split wood by hand. The fire gets tended all night so the meat is ready when the window opens. That's where the bark and the smoke ring come from, and it's why we close when it's gone.</p>
+      <h2>Oak, salt, pepper, and all night.</h2>
+      <p>Everything cooks on a 330-gallon direct-flow offset smoker Johnny built himself, burning nothing but oak. The rub is Texas style, just salt and pepper, so the meat and the smoke do the talking. Briskets go on between midnight and 3 AM and cook 12 to 16 hours, depending on size.</p>
       <div class="facts">
-        <div class="fact"><b>Offset</b><span>Stick burner</span></div>
-        <div class="fact"><b>All night</b><span>On the pit</span></div>
-        <div class="fact"><b>2023</b><span>Smoking since</span></div>
+        <div class="fact"><b>330 gal</b><span>Hand-built offset</span></div>
+        <div class="fact"><b>Oak</b><span>Only wood we burn</span></div>
+        <div class="fact"><b>12–16 hrs</b><span>Brisket cook</span></div>
       </div>
     </div>
     <div class="pit-photos">
@@ -239,11 +270,11 @@ footer .links { display: flex; gap: 20px; flex-wrap: wrap; }
         <div class="label">Off the pit</div>
         <h2>What we're smoking</h2>
       </div>
-      <p>The lineup changes with what's on the pit that day. Check Facebook for today's board and specials.</p>
+      <p>The full menu is on every day. Brisket and spare ribs are the two people line up for. Want to make sure you get some? Call ahead to pre-order: <a href="tel:+15412808851">(541) 280-8851</a>.</p>
     </div>
     <div class="plates">
-      <figure class="plate"><img src="img/brisket-truck.jpg" alt="Two thick slices of brisket held up in front of the Smokin J's trailer" loading="lazy" width="1050" height="1400"><figcaption><b>Brisket</b><span>Salt, pepper, smoke, and a long cook.</span></figcaption></figure>
-      <figure class="plate"><img src="img/ribs.jpg" alt="A box of sauced, sliced pork ribs with a glossy glaze" loading="lazy" width="1050" height="1400"><figcaption><b>Ribs</b><span>Glazed and sliced, ready to eat.</span></figcaption></figure>
+      <figure class="plate"><img src="img/brisket-truck.jpg" alt="Two thick slices of brisket held up in front of the Smokin J's trailer" loading="lazy" width="1050" height="1400"><figcaption><b>Brisket</b><span>Salt, pepper, oak, 12 to 16 hours.</span></figcaption></figure>
+      <figure class="plate"><img src="img/ribs.jpg" alt="A box of sauced, sliced pork ribs with a glossy glaze" loading="lazy" width="1050" height="1400"><figcaption><b>Spare Ribs</b><span>Neck and neck with the brisket for the top spot.</span></figcaption></figure>
       <figure class="plate"><img src="img/sandwich.jpg" alt="A BBQ sandwich piled with smoked meat, sauce and coleslaw" loading="lazy" width="1050" height="1400"><figcaption><b>Sandwiches</b><span>Piled high and topped with slaw.</span></figcaption></figure>
       <figure class="plate"><img src="img/turkey.jpg" alt="Smoked turkey breast sliced thin on a cutting board" loading="lazy" width="1050" height="1400"><figcaption><b>Smoked Turkey</b><span>Juicy breast, sliced thin.</span></figcaption></figure>
       <figure class="plate"><img src="img/tri-tip.jpg" alt="Seasoned tri-tips going onto the smoker" loading="lazy" width="1400" height="1050"><figcaption><b>Tri-Tip</b><span>A Pacific Northwest favorite.</span></figcaption></figure>
@@ -263,20 +294,28 @@ footer .links { display: flex; gap: 20px; flex-wrap: wrap; }
 
 <section class="cater" id="catering">
   <div class="wrap">
-    <img src="img/pitmaster.jpg" alt="The pitmaster standing in front of the Smokin J's BBQ banner at an outdoor event" loading="lazy" width="860" height="1400">
+    <img src="img/chopped.jpg" alt="A full hotel pan of chopped smoked beef ready for a catered event" loading="lazy" width="1050" height="1400">
     <div>
-      <div class="label">Events · Parties · Work lunches</div>
+      <div class="label">Weddings · Events · Work lunches</div>
       <h2>Too hot to cook? Take the night off.</h2>
-      <p>Smokin J's brings the smoke to your event. Tell us the date, how many people, and where, and we'll work out a spread that feeds the crowd.</p>
+      <p>Smokin J's caters groups of 50 to 300 across Central Oregon. Bring the truck to your event, or pick up pans of brisket and ribs and serve it yourself.</p>
       <ul>
-        <li>Pans of brisket, ribs and more for pickup</li>
-        <li>On-site service at events and markets</li>
-        <li>A menu built around your group</li>
+        <li>Truck on site for weddings, parties and events</li>
+        <li>Pans of meat and sides for pickup</li>
+        <li>Drop-off delivery for work lunches</li>
       </ul>
+      <dl>
+        <div><dt>Group size</dt><dd>50 – 300 people</dd></div>
+        <div><dt>Pricing</dt><dd>Per person</dd></div>
+        <div><dt>Book ahead</dt><dd>30 days minimum</dd></div>
+        <div><dt>Deposit</dt><dd>50% to hold your date</dd></div>
+      </dl>
+      <p class="muted" style="margin:0 0 24px">Serving Redmond, Bend, Madras, Prineville and Sunriver.</p>
       <div class="contact">
-        <a class="btn fire" href="mailto:offsetstickburner@gmail.com?subject=Catering%20request">Email for Catering</a>
-        <span class="email">offsetstickburner@gmail.com</span>
+        <a class="btn fire" href="mailto:offsetstickburner@gmail.com?subject=Catering%20request&amp;body=Date%3A%0AHeadcount%3A%0ALocation%3A%0ATruck%20on%20site%2C%20pickup%2C%20or%20drop-off%3A%0A">Email for Catering</a>
+        <a class="btn" href="tel:+15412808851">Call (541) 280-8851</a>
       </div>
+      <div class="callout">Or email <span class="email" style="font-size:inherit">offsetstickburner@gmail.com</span> with your date, headcount and location.</div>
     </div>
   </div>
 </section>
@@ -287,11 +326,12 @@ footer .links { display: flex; gap: 20px; flex-wrap: wrap; }
       <div class="label">Where to find us</div>
       <h2>Follow your nose.</h2>
       <div class="addr">197 NW Oneil Hwy<br>Redmond, OR 97756</div>
-      <div class="addr-sub">At Cinder Butte Meat Company · Tue – Thu · 10 AM till sold out</div>
+      <div class="addr-sub">At Cinder Butte Meat Company · 10 AM – 8 PM · Open year-round</div>
       <div class="ctas">
         <a class="btn fire" href="https://www.google.com/maps/search/?api=1&amp;query=197+NW+Oneil+Hwy%2C+Redmond%2C+OR+97756" target="_blank" rel="noopener">Open in Maps</a>
-        <a class="btn" href="https://www.facebook.com/p/Smokin-Js-BBQ-61557063061645/" target="_blank" rel="noopener">Today's Specials</a>
+        <a class="btn" href="tel:+15412808851">Call to Pre-Order</a>
       </div>
+      <div class="callout">Tap to pay and Apple Pay accepted.</div>
       <div class="motto">Find the smoke.<br>You won't regret it.</div>
     </div>
     <img src="img/cinder-butte.jpg" alt="The Smokin J's trailer parked beside the Cinder Butte Meat Company sign" loading="lazy" width="1400" height="1050">
@@ -303,6 +343,7 @@ footer .links { display: flex; gap: 20px; flex-wrap: wrap; }
     <svg viewBox="0 0 300 110" role="img" aria-label="Smokin J's BBQ, est. 2023"><use href="#badge"/></svg>
     <div class="links">
       <span>197 NW Oneil Hwy, Redmond, OR</span>
+      <a href="tel:+15412808851">(541) 280-8851</a>
       <a href="mailto:offsetstickburner@gmail.com">offsetstickburner@gmail.com</a>
       <a href="https://www.facebook.com/p/Smokin-Js-BBQ-61557063061645/" target="_blank" rel="noopener">Facebook</a>
     </div>
@@ -311,7 +352,7 @@ footer .links { display: flex; gap: 20px; flex-wrap: wrap; }
 
 <script>
 (() => {
-  // Open status in Redmond's time zone: Tue–Thu, opens 10 AM, closes when it sells out.
+  // Open status in Redmond's time zone: Tue–Thu, 10 AM to 8 PM.
   const parts = Object.fromEntries(new Intl.DateTimeFormat('en-US', {
     timeZone: 'America/Los_Angeles', weekday: 'short', hour: 'numeric', hour12: false
   }).formatToParts(new Date()).map(p => [p.type, p.value]));
@@ -323,9 +364,9 @@ footer .links { display: flex; gap: 20px; flex-wrap: wrap; }
   const serving = idx >= 1 && idx <= 3;
   const status = document.getElementById('status');
   const text = document.getElementById('status-text');
-  if (serving && hour >= 10 && hour < 18) {
+  if (serving && hour >= 10 && hour < 20) {
     status.classList.add('open');
-    text.textContent = 'Serving today till sold out';
+    text.textContent = 'Open now till 8 PM';
   } else if (serving && hour < 10) {
     text.textContent = 'Opens today at 10 AM';
   } else {
