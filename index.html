@@ -293,6 +293,8 @@ dialog::backdrop { background: rgba(8,6,5,.75); backdrop-filter: blur(3px); }
 
 .toast { position: fixed; left: 50%; bottom: calc(18px + env(safe-area-inset-bottom, 0px)); transform: translate(-50%, 160%); background: var(--cream); color: var(--char); font-family: var(--cond); font-weight: 900; letter-spacing: .1em; text-transform: uppercase; padding: 10px 18px; border-radius: 999px; box-shadow: 0 10px 30px rgba(0,0,0,.5); transition: transform .3s; z-index: 50; white-space: nowrap; }
 .toast.show { transform: translate(-50%, 0); }
+.notice { background: var(--ember); color: #fff; text-align: center; font-weight: 700; padding: .6rem 16px; position: relative; z-index: 60; }
+.notice[hidden] { display: none; }
 </style>
 </head>
 <body>
@@ -307,6 +309,8 @@ dialog::backdrop { background: rgba(8,6,5,.75); backdrop-filter: blur(3px); }
     <text x="150" y="90" text-anchor="middle" font-family="'Alfa Slab One', Rockwell, Georgia, serif" font-size="14" letter-spacing="3" fill="currentColor">EST. 2023</text>
   </symbol>
 </svg>
+
+<div class="notice" id="notice" role="status" hidden><span id="noticeText"></span></div>
 
 <nav class="nav" aria-label="Main">
   <div class="wrap">
@@ -537,35 +541,19 @@ dialog::backdrop { background: rgba(8,6,5,.75); backdrop-filter: blur(3px); }
 
 <script>
 document.documentElement.classList.add('js');
-(() => {
+(async () => {
   const $ = s => document.querySelector(s);
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const money = n => '$' + n;
 
-  /* ---------- Menu, from Johnny's board (Oct 2026) ---------- */
-  const MEATS = ['Brisket', 'Pulled Pork', 'Spare Ribs', 'Turkey Breast'];
-  const SIDES = ['Potato Salad', 'Pork & Beans', 'Cole Slaw', 'Pasta Salad'];
-  const MENU = {
-    plates: { note: 'Plates', items: [
-      { id: 'p1', name: '1 Meat, 1 Side', price: 19, desc: 'Pick any meat and a house-made side.', meats: 1, sides: 1, img: 'img/brisket-truck.jpg' },
-      { id: 'p2', name: '2 Meats, 2 Sides', price: 24, desc: "Two meats, two sides. The move if you can't decide.", meats: 2, sides: 2, img: 'img/ribs.jpg' },
-      { id: 'pps', name: 'Pulled Pork Sando + 1 Side', price: 19, desc: 'Smoked pulled pork on a bun.', sides: 1, img: 'img/sandwich.jpg' },
-      { id: 'bs', name: 'Brisket Sando + 1 Side', price: 22, desc: 'Sliced brisket on a bun.', sides: 1, img: 'img/brisket-slice.jpg' }
-    ]},
-    meats: { note: 'By the ½ lb', items: [
-      { id: 'mb', name: 'Brisket', unit: '½ lb', price: 19, desc: 'Salt, pepper, oak, 12 to 16 hours.', img: 'img/brisket-truck.jpg' },
-      { id: 'mp', name: 'Pulled Pork', unit: '½ lb', price: 16, desc: 'Smoked low and pulled by hand.', img: 'img/sandwich.jpg' },
-      { id: 'mrh', name: 'Spare Ribs, ½ Rack', price: 20, desc: 'Neck and neck with the brisket for the top spot.', img: 'img/ribs.jpg' },
-      { id: 'mrw', name: 'Spare Ribs, Whole Rack', price: 32, desc: 'The whole rack.', img: 'img/ribs-glazed.jpg' },
-      { id: 'mt', name: 'Turkey Breast', unit: '½ lb', price: 16, desc: 'Juicy breast, sliced thin.', img: 'img/turkey.jpg' },
-      { id: 'sd', name: 'Side', price: 5, desc: SIDES.join(', ') + '.', pickSide: true },
-      { id: 'w', name: 'Water', price: 2, desc: 'Bottled water.' }
-    ]},
-    combos: { note: 'Feed the crew', items: [
-      { id: 'lp', name: 'Little Piggy', price: 65, desc: '½ lb brisket, ½ rack, ½ lb turkey, 3 sides. Feeds 2–3.', sides: 3, img: 'img/loaded-pit.jpg' },
-      { id: 'bp', name: 'Big Piggy', price: 85, desc: '½ lb brisket, ½ lb turkey, ½ rack, ½ lb pulled pork, 4 sides. Feeds 3–5.', sides: 4, img: 'img/bark.jpg' }
-    ]}
-  };
+  /* ---------- Menu: lives in content/site.json (edited through Pages CMS) ---------- */
+  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+  let DATA = null;
+  try { const r = await fetch('content/site.json', { cache: 'no-cache' }); if (r.ok) DATA = await r.json(); } catch (e) {}
+  const empty = { note: '', items: [] };
+  const MEATS = DATA?.meats || [], SIDES = DATA?.sides || [];
+  const MENU = { plates: DATA?.plates || empty, meats: DATA?.meatsMenu || empty, combos: DATA?.combos || empty };
+  if (DATA?.notice?.show && DATA.notice.text) { $('#noticeText').textContent = DATA.notice.text; $('#notice').hidden = false; }
   const byId = Object.fromEntries(Object.values(MENU).flatMap(s => s.items).map(i => [i.id, i]));
   const label = it => it.name + (it.unit ? ' (' + it.unit + ')' : '');
 
@@ -574,14 +562,15 @@ document.documentElement.classList.add('js');
   let tab = 'plates';
   function renderPanel() {
     const sec = MENU[tab];
-    panel.innerHTML = `<p class="note">${sec.note}</p><div class="items">` + sec.items.map(it => `
+    if (!sec.items.length) { panel.innerHTML = `<p class="note">Menu didn't load. Call <a href="tel:+15412808851">(541) 280-8851</a> for today's board.</p>`; return; }
+    panel.innerHTML = `<p class="note">${esc(sec.note)}</p><div class="items">` + sec.items.map(it => `
       <div class="item">
-        ${it.img ? `<img class="thumb" src="${it.img}" alt="" loading="lazy">` : `<span class="thumb blank">✦</span>`}
-        <div><div class="nm">${it.name}</div><div class="ds">${it.desc}</div></div>
+        ${it.img ? `<img class="thumb" src="${esc(it.img.replace(/^\/+/, ''))}" alt="" loading="lazy">` : `<span class="thumb blank">✦</span>`}
+        <div><div class="nm">${esc(it.name)}</div><div class="ds">${esc(it.desc)}</div></div>
         <div class="pr">${it.price}</div>
-        <button class="add" type="button" data-add="${it.id}" aria-label="Add ${it.name} to order">+</button>
+        <button class="add" type="button" data-add="${esc(it.id)}" aria-label="Add ${esc(it.name)} to order">+</button>
       </div>`).join('') + `</div>` +
-      `<div class="sides-line">House-made sides: <span>${SIDES.join(' · ')}</span> · Side 5 · Water 2</div>`;
+      `<div class="sides-line">House-made sides: <span>${SIDES.map(esc).join(' · ')}</span>${byId.sd ? ' · Side ' + byId.sd.price : ''}${byId.w ? ' · Water ' + byId.w.price : ''}</div>`;
     panel.setAttribute('aria-labelledby', 'tab-' + tab);
   }
   const tabs = [...document.querySelectorAll('.tab')];
@@ -614,9 +603,9 @@ document.documentElement.classList.add('js');
     $('#lines').innerHTML = order.map((l, i) => {
       const it = byId[l.id];
       return `<li>
-        <div class="ln-name">${label(it)}</div>
+        <div class="ln-name">${esc(label(it))}</div>
         <div class="ln-price">${money(it.price * l.qty)}</div>
-        <div class="ln-det">${l.detail || ''}</div>
+        <div class="ln-det">${esc(l.detail)}</div>
         <div class="qty"><button type="button" data-q="${i}" data-d="-1" aria-label="One less ${it.name}">−</button><span>${l.qty}</span><button type="button" data-q="${i}" data-d="1" aria-label="One more ${it.name}">+</button></div>
       </li>`;
     }).join('');
@@ -661,7 +650,7 @@ document.documentElement.classList.add('js');
   let pending = null, afterPick = null;
   function chipGroup(text, opts, count, key) {
     return `<div class="pick" data-key="${key}" data-count="${count}"><span>${text}</span><div class="chips">` +
-      opts.map(o => `<button type="button" aria-pressed="false" data-v="${o}">${o}</button>`).join('') + `</div></div>`;
+      opts.map(o => `<button type="button" aria-pressed="false" data-v="${esc(o)}">${esc(o)}</button>`).join('') + `</div></div>`;
   }
   function openPick(it, then) {
     pending = it; afterPick = then || null;
@@ -716,11 +705,11 @@ document.documentElement.classList.add('js');
   /* ---------- How many are eating ---------- */
   let feedN = 2;
   function plan(n) {
-    if (n <= 1) return null;
+    if (n <= 1 || !byId.bp || !byId.lp) return null;
     let best = null;
     for (let b = 0; b <= 6; b++) for (let l = 0; l <= 6; l++) {
       if (b + l === 0 || 5 * b + 3 * l < n) continue;
-      const cost = 85 * b + 65 * l;
+      const cost = byId.bp.price * b + byId.lp.price * l;
       if (!best || cost < best.cost || (cost === best.cost && b + l < best.b + best.l)) best = { b, l, cost };
     }
     return best;
@@ -734,7 +723,7 @@ document.documentElement.classList.add('js');
     }
     $('#feedAdd').textContent = 'Add to Order';
     const p = plan(feedN);
-    if (!p) { $('#feedSay').innerHTML = 'Grab a <b>1 Meat, 1 Side</b> plate for <b>$19</b>.'; return; }
+    if (!p) { $('#feedSay').innerHTML = `Grab a <b>1 Meat, 1 Side</b> plate${byId.p1 ? ' for <b>' + money(byId.p1.price) + '</b>' : ''}.`; return; }
     const parts = [];
     if (p.b) parts.push(`${p.b > 1 ? p.b + ' × ' : ''}<b>Big Piggy</b>`);
     if (p.l) parts.push(`${p.l > 1 ? p.l + ' × ' : ''}<b>Little Piggy</b>`);
@@ -745,7 +734,7 @@ document.documentElement.classList.add('js');
   $('#feedAdd').addEventListener('click', () => {
     if (feedN >= 20) { document.getElementById('catering').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' }); return; }
     const p = plan(feedN);
-    if (!p) { openPick(byId.p1); return; }
+    if (!p) { if (byId.p1) openPick(byId.p1); return; }
     const queue = [...Array(p.b).fill('bp'), ...Array(p.l).fill('lp')];
     const next = () => { const id = queue.shift(); if (id) openPick(byId[id], next); };
     next();

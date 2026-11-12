@@ -1,0 +1,36 @@
+{
+  "notice": {
+    "show": false,
+    "text": "Sold out for today. Thanks, Redmond! Back tomorrow at 10."
+  },
+  "meats": ["Brisket", "Pulled Pork", "Spare Ribs", "Turkey Breast"],
+  "sides": ["Potato Salad", "Pork & Beans", "Cole Slaw", "Pasta Salad"],
+  "plates": {
+    "note": "Plates",
+    "items": [
+      { "id": "p1", "name": "1 Meat, 1 Side", "unit": "", "price": 19, "desc": "Pick any meat and a house-made side.", "meats": 1, "sides": 1, "pickSide": false, "img": "img/brisket-truck.jpg" },
+      { "id": "p2", "name": "2 Meats, 2 Sides", "unit": "", "price": 24, "desc": "Two meats, two sides. The move if you can't decide.", "meats": 2, "sides": 2, "pickSide": false, "img": "img/ribs.jpg" },
+      { "id": "pps", "name": "Pulled Pork Sando + 1 Side", "unit": "", "price": 19, "desc": "Smoked pulled pork on a bun.", "meats": 0, "sides": 1, "pickSide": false, "img": "img/sandwich.jpg" },
+      { "id": "bs", "name": "Brisket Sando + 1 Side", "unit": "", "price": 22, "desc": "Sliced brisket on a bun.", "meats": 0, "sides": 1, "pickSide": false, "img": "img/brisket-slice.jpg" }
+    ]
+  },
+  "meatsMenu": {
+    "note": "By the ½ lb",
+    "items": [
+      { "id": "mb", "name": "Brisket", "unit": "½ lb", "price": 19, "desc": "Salt, pepper, oak, 12 to 16 hours.", "meats": 0, "sides": 0, "pickSide": false, "img": "img/brisket-truck.jpg" },
+      { "id": "mp", "name": "Pulled Pork", "unit": "½ lb", "price": 16, "desc": "Smoked low and pulled by hand.", "meats": 0, "sides": 0, "pickSide": false, "img": "img/sandwich.jpg" },
+      { "id": "mrh", "name": "Spare Ribs, ½ Rack", "unit": "", "price": 20, "desc": "Neck and neck with the brisket for the top spot.", "meats": 0, "sides": 0, "pickSide": false, "img": "img/ribs.jpg" },
+      { "id": "mrw", "name": "Spare Ribs, Whole Rack", "unit": "", "price": 32, "desc": "The whole rack.", "meats": 0, "sides": 0, "pickSide": false, "img": "img/ribs-glazed.jpg" },
+      { "id": "mt", "name": "Turkey Breast", "unit": "½ lb", "price": 16, "desc": "Juicy breast, sliced thin.", "meats": 0, "sides": 0, "pickSide": false, "img": "img/turkey.jpg" },
+      { "id": "sd", "name": "Side", "unit": "", "price": 5, "desc": "Potato Salad, Pork & Beans, Cole Slaw, Pasta Salad.", "meats": 0, "sides": 0, "pickSide": true, "img": "" },
+      { "id": "w", "name": "Water", "unit": "", "price": 2, "desc": "Bottled water.", "meats": 0, "sides": 0, "pickSide": false, "img": "" }
+    ]
+  },
+  "combos": {
+    "note": "Feed the crew",
+    "items": [
+      { "id": "lp", "name": "Little Piggy", "unit": "", "price": 65, "desc": "½ lb brisket, ½ rack, ½ lb turkey, 3 sides. Feeds 2–3.", "meats": 0, "sides": 3, "pickSide": false, "img": "img/loaded-pit.jpg" },
+      { "id": "bp", "name": "Big Piggy", "unit": "", "price": 85, "desc": "½ lb brisket, ½ lb turkey, ½ rack, ½ lb pulled pork, 4 sides. Feeds 3–5.", "meats": 0, "sides": 4, "pickSide": false, "img": "img/bark.jpg" }
+    ]
+  }
+}

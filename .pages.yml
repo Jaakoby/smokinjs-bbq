@@ -1,0 +1,196 @@
+# Pages CMS (app.pagescms.org) — the editor Johnny uses. Saving there commits to
+# main and GitHub Pages redeploys in about a minute.
+media:
+  input: img
+  output: img
+content:
+- name: site
+  label: Menu & Notice
+  type: file
+  path: content/site.json
+  format: json
+  fields:
+  - name: notice
+    label: Banner at top of site
+    type: object
+    fields:
+    - name: show
+      label: Show the banner
+      type: boolean
+    - name: text
+      label: Banner text
+      type: string
+      description: e.g. Sold out for today! / Closed Thanksgiving week / Catering a wedding, truck closed Wed
+  - name: meats
+    label: Meats customers can pick on plates
+    type: string
+    list: true
+  - name: sides
+    label: Sides customers can pick
+    type: string
+    list: true
+  - name: plates
+    label: Plates tab
+    type: object
+    fields:
+    - name: note
+      label: Heading on the board
+      type: string
+    - name: items
+      label: Items
+      type: object
+      list:
+        collapsible:
+          collapsed: true
+          summary: '{name} — ${price}'
+      fields:
+      - name: name
+        label: Name
+        type: string
+        required: true
+      - name: price
+        label: Price ($)
+        type: number
+        required: true
+        options:
+          min: 0
+      - name: desc
+        label: Description
+        type: text
+      - name: unit
+        label: Size label
+        type: string
+        description: Optional, e.g. ½ lb. Leave blank if none.
+      - name: img
+        label: Photo
+        type: image
+      - name: meats
+        label: How many meats the customer picks
+        type: number
+        description: 0 if they don't pick a meat
+        options:
+          min: 0
+      - name: sides
+        label: How many sides the customer picks
+        type: number
+        description: 0 if no sides come with it
+        options:
+          min: 0
+      - name: pickSide
+        label: Customer picks which side (for the single Side item)
+        type: boolean
+      - name: id
+        label: ID (leave alone)
+        type: string
+        required: true
+        description: Short unique code, letters only. Keep existing ones as-is; for a new item just make one up. Big Piggy must stay bp, Little Piggy lp, 1 Meat 1 Side p1 (the crew-size picker uses them).
+  - name: meatsMenu
+    label: Meats tab
+    type: object
+    fields:
+    - name: note
+      label: Heading on the board
+      type: string
+    - name: items
+      label: Items
+      type: object
+      list:
+        collapsible:
+          collapsed: true
+          summary: '{name} — ${price}'
+      fields:
+      - name: name
+        label: Name
+        type: string
+        required: true
+      - name: price
+        label: Price ($)
+        type: number
+        required: true
+        options:
+          min: 0
+      - name: desc
+        label: Description
+        type: text
+      - name: unit
+        label: Size label
+        type: string
+        description: Optional, e.g. ½ lb. Leave blank if none.
+      - name: img
+        label: Photo
+        type: image
+      - name: meats
+        label: How many meats the customer picks
+        type: number
+        description: 0 if they don't pick a meat
+        options:
+          min: 0
+      - name: sides
+        label: How many sides the customer picks
+        type: number
+        description: 0 if no sides come with it
+        options:
+          min: 0
+      - name: pickSide
+        label: Customer picks which side (for the single Side item)
+        type: boolean
+      - name: id
+        label: ID (leave alone)
+        type: string
+        required: true
+        description: Short unique code, letters only. Keep existing ones as-is; for a new item just make one up. Big Piggy must stay bp, Little Piggy lp, 1 Meat 1 Side p1 (the crew-size picker uses them).
+  - name: combos
+    label: Combos tab
+    type: object
+    fields:
+    - name: note
+      label: Heading on the board
+      type: string
+    - name: items
+      label: Items
+      type: object
+      list:
+        collapsible:
+          collapsed: true
+          summary: '{name} — ${price}'
+      fields:
+      - name: name
+        label: Name
+        type: string
+        required: true
+      - name: price
+        label: Price ($)
+        type: number
+        required: true
+        options:
+          min: 0
+      - name: desc
+        label: Description
+        type: text
+      - name: unit
+        label: Size label
+        type: string
+        description: Optional, e.g. ½ lb. Leave blank if none.
+      - name: img
+        label: Photo
+        type: image
+      - name: meats
+        label: How many meats the customer picks
+        type: number
+        description: 0 if they don't pick a meat
+        options:
+          min: 0
+      - name: sides
+        label: How many sides the customer picks
+        type: number
+        description: 0 if no sides come with it
+        options:
+          min: 0
+      - name: pickSide
+        label: Customer picks which side (for the single Side item)
+        type: boolean
+      - name: id
+        label: ID (leave alone)
+        type: string
+        required: true
+        description: Short unique code, letters only. Keep existing ones as-is; for a new item just make one up. Big Piggy must stay bp, Little Piggy lp, 1 Meat 1 Side p1 (the crew-size picker uses them).
